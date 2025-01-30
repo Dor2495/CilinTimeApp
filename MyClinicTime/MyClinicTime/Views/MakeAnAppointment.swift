@@ -16,6 +16,9 @@ struct MakeAnAppointment: View {
             Form {
                 Section {
                     Text("")
+                    
+                    // MARK: set list of available fake apoointments
+                    
                 } header: {
                     Text("Choose appointment type")
                 }
