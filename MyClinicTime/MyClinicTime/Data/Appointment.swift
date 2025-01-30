@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Appointment: Identifiable {
+struct Appointment: Identifiable, Equatable {
     var id: String = UUID().uuidString
     var date: Date
     var title: String
