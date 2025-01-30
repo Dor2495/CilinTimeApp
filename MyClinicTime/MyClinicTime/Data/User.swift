@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Equatable {
     var id: String = UUID().uuidString
     
     var firstName: String
@@ -17,14 +17,16 @@ struct User: Identifiable {
     var password: String
     
     var isLoggedIn: Bool = false
-    var appointments: [Appointment] = [
-        Appointment(date: Date(), title: "Pedicure", price: 100),
-        Appointment(date: Date(), title: "Menicure", price: 200),
-        Appointment(date: Date(), title: "3", price: 100),
-        Appointment(date: Date(), title: "2", price: 200),
-        Appointment(date: Date(), title: "6", price: 100),
-        Appointment(date: Date(), title: "4", price: 200),
-        Appointment(date: Date(), title: "1", price: 100),
-        Appointment(date: Date(), title: "7", price: 200),
-    ]
+    var appointments: [Appointment] = []
+    
+    mutating func addAppointment(title: String, price: Double, date: Date) {
+        let newAppointment = Appointment(date: date, title: title, price: price, user: self)
+        appointments.append(newAppointment)
+    }
+    
+    static func dateFormatter() -> DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy.MM.dd" // Ensure the format matches the date strings
+            return formatter
+        }
 }

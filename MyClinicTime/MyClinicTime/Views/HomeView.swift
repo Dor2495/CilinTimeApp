@@ -17,13 +17,14 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
+            
             VStack {
                 CustomeCalendarView(date: $date, selectedDate: $selectedDate)
                 VStack {
-                    ListView(selectedDate: selectedDate, title: "My appointments")
+                    ListView(selectedDate: selectedDate)
                 }
                 .padding()
-                .navigationTitle("Welcome \(data.activeUser.firstName)")
+                .navigationTitle("My Appointments")
             }
         }
         .ignoresSafeArea()
@@ -34,37 +35,31 @@ struct ListView: View {
     @EnvironmentObject var data: UserViewModel
     
     var selectedDate: Date?
-    var title: String
     @State var appointmentsAtDay: [Appointment] = []
     
     var body: some View {
-        Section {
-            List {
-                if data.activeUser.appointments.count == 0 {
-                    Text("No appointments yet")
-                }
-                if selectedDate == nil {
-                    ForEach($data.activeUser.appointments) { $appointment in
-                        NavigationLink(destination: AppointmentEditorView(appointment: $appointment)) {
-                            AppointmentRowView(appointment: appointment)
-                        }
-                    }
-                    .onDelete(perform: deleteAppointment)
-                } else {
-                    ForEach($appointmentsAtDay) { $appointment in
-                        NavigationLink(destination: AppointmentEditorView(appointment: $appointment)) {
-                            AppointmentRowView(appointment: appointment)
-                        }
-                    }
-                    .onDelete(perform: deleteAppointment)
-                }
+        List {
+            if data.activeUser.appointments.count == 0 {
+                Text("No appointments yet")
             }
-            .listStyle(.plain)
-            .scrollIndicators(.hidden)
-        } header: {
-            Text("\(title)")
-                .font(.system(size: 20, weight: .bold, design: .serif))
+            if selectedDate == nil {
+                ForEach($data.activeUser.appointments) { $appointment in
+                    NavigationLink(destination: AppointmentEditorView(appointment: $appointment)) {
+                        AppointmentRowView(appointment: appointment)
+                    }
+                }
+                .onDelete(perform: deleteAppointment)
+            } else {
+                ForEach($appointmentsAtDay) { $appointment in
+                    NavigationLink(destination: AppointmentEditorView(appointment: $appointment)) {
+                        AppointmentRowView(appointment: appointment)
+                    }
+                }
+                .onDelete(perform: deleteAppointment)
+            }
         }
+        .listStyle(.plain)
+        .scrollIndicators(.hidden)
         .onChange(of: selectedDate) {
             print("on appear")
             appointmentsAtDay = data.activeUser.appointments.filter { $0.date.startOfDay == selectedDate?.startOfDay }

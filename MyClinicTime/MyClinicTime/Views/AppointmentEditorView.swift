@@ -28,7 +28,7 @@ struct AppointmentEditorView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Save") {
                         //MARK: save changes
-                        saveChanges(of: appointment)
+                        
                         dismiss()
                     }
                 }
@@ -36,12 +36,6 @@ struct AppointmentEditorView: View {
             
             .navigationTitle("Edit Appointment")
         }
-    }
-    
-    private func saveChanges(of newAppointment: Appointment) {
-        let appointmentToUpdate = data.activeUser.appointments.first(where: { $0.id == newAppointment.id })!
-        
-        data.activeUser.appointments[data.activeUser.appointments.firstIndex(of: appointmentToUpdate)!] = appointmentToUpdate
     }
 }
 
