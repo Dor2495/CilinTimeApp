@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		B4A7EB5B2D466F7F0001478C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B4A7EB422D466F7E0001478C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4A7EB492D466F7E0001478C;
+			remoteInfo = MyClinicTime;
+		};
+		B4A7EB652D466F7F0001478C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B4A7EB422D466F7E0001478C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4A7EB492D466F7E0001478C;
+			remoteInfo = MyClinicTime;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B4A7EB4A2D466F7E0001478C /* MyClinicTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyClinicTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4A7EB5A2D466F7F0001478C /* MyClinicTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyClinicTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4A7EB642D466F7F0001478C /* MyClinicTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyClinicTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B4A7EB4C2D466F7E0001478C /* MyClinicTime */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MyClinicTime;
+			sourceTree = "<group>";
+		};
+		B4A7EB5D2D466F7F0001478C /* MyClinicTimeTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MyClinicTimeTests;
+			sourceTree = "<group>";
+		};
+		B4A7EB672D466F7F0001478C /* MyClinicTimeUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MyClinicTimeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B4A7EB472D466F7E0001478C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4A7EB572D466F7F0001478C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4A7EB612D466F7F0001478C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B4A7EB412D466F7E0001478C = {
+			isa = PBXGroup;
+			children = (
+				B4A7EB4C2D466F7E0001478C /* MyClinicTime */,
+				B4A7EB5D2D466F7F0001478C /* MyClinicTimeTests */,
+				B4A7EB672D466F7F0001478C /* MyClinicTimeUITests */,
+				B4A7EB4B2D466F7E0001478C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B4A7EB4B2D466F7E0001478C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B4A7EB4A2D466F7E0001478C /* MyClinicTime.app */,
+				B4A7EB5A2D466F7F0001478C /* MyClinicTimeTests.xctest */,
+				B4A7EB642D466F7F0001478C /* MyClinicTimeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B4A7EB492D466F7E0001478C /* MyClinicTime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4A7EB6E2D466F7F0001478C /* Build configuration list for PBXNativeTarget "MyClinicTime" */;
+			buildPhases = (
+				B4A7EB462D466F7E0001478C /* Sources */,
+				B4A7EB472D466F7E0001478C /* Frameworks */,
+				B4A7EB482D466F7E0001478C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B4A7EB4C2D466F7E0001478C /* MyClinicTime */,
+			);
+			name = MyClinicTime;
+			packageProductDependencies = (
+			);
+			productName = MyClinicTime;
+			productReference = B4A7EB4A2D466F7E0001478C /* MyClinicTime.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B4A7EB592D466F7F0001478C /* MyClinicTimeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4A7EB712D466F7F0001478C /* Build configuration list for PBXNativeTarget "MyClinicTimeTests" */;
+			buildPhases = (
+				B4A7EB562D466F7F0001478C /* Sources */,
+				B4A7EB572D466F7F0001478C /* Frameworks */,
+				B4A7EB582D466F7F0001478C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4A7EB5C2D466F7F0001478C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B4A7EB5D2D466F7F0001478C /* MyClinicTimeTests */,
+			);
+			name = MyClinicTimeTests;
+			packageProductDependencies = (
+			);
+			productName = MyClinicTimeTests;
+			productReference = B4A7EB5A2D466F7F0001478C /* MyClinicTimeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B4A7EB632D466F7F0001478C /* MyClinicTimeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4A7EB742D466F7F0001478C /* Build configuration list for PBXNativeTarget "MyClinicTimeUITests" */;
+			buildPhases = (
+				B4A7EB602D466F7F0001478C /* Sources */,
+				B4A7EB612D466F7F0001478C /* Frameworks */,
+				B4A7EB622D466F7F0001478C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4A7EB662D466F7F0001478C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B4A7EB672D466F7F0001478C /* MyClinicTimeUITests */,
+			);
+			name = MyClinicTimeUITests;
+			packageProductDependencies = (
+			);
+			productName = MyClinicTimeUITests;
+			productReference = B4A7EB642D466F7F0001478C /* MyClinicTimeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B4A7EB422D466F7E0001478C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					B4A7EB492D466F7E0001478C = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					B4A7EB592D466F7F0001478C = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = B4A7EB492D466F7E0001478C;
+					};
+					B4A7EB632D466F7F0001478C = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = B4A7EB492D466F7E0001478C;
+					};
+				};
+			};
+			buildConfigurationList = B4A7EB452D466F7E0001478C /* Build configuration list for PBXProject "MyClinicTime" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B4A7EB412D466F7E0001478C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B4A7EB4B2D466F7E0001478C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B4A7EB492D466F7E0001478C /* MyClinicTime */,
+				B4A7EB592D466F7F0001478C /* MyClinicTimeTests */,
+				B4A7EB632D466F7F0001478C /* MyClinicTimeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B4A7EB482D466F7E0001478C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4A7EB582D466F7F0001478C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4A7EB622D466F7F0001478C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B4A7EB462D466F7E0001478C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4A7EB562D466F7F0001478C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4A7EB602D466F7F0001478C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4A7EB5C2D466F7F0001478C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4A7EB492D466F7E0001478C /* MyClinicTime */;
+			targetProxy = B4A7EB5B2D466F7F0001478C /* PBXContainerItemProxy */;
+		};
+		B4A7EB662D466F7F0001478C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4A7EB492D466F7E0001478C /* MyClinicTime */;
+			targetProxy = B4A7EB652D466F7F0001478C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B4A7EB6C2D466F7F0001478C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B4A7EB6D2D466F7F0001478C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B4A7EB6F2D466F7F0001478C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MyClinicTime/Preview Content\"";
+				DEVELOPMENT_TEAM = R2LK952246;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = DorMiz.MyClinicTime;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B4A7EB702D466F7F0001478C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MyClinicTime/Preview Content\"";
+				DEVELOPMENT_TEAM = R2LK952246;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = DorMiz.MyClinicTime;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B4A7EB722D466F7F0001478C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R2LK952246;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = DorMiz.MyClinicTimeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyClinicTime.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyClinicTime";
+			};
+			name = Debug;
+		};
+		B4A7EB732D466F7F0001478C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R2LK952246;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = DorMiz.MyClinicTimeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyClinicTime.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyClinicTime";
+			};
+			name = Release;
+		};
+		B4A7EB752D466F7F0001478C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R2LK952246;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = DorMiz.MyClinicTimeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyClinicTime;
+			};
+			name = Debug;
+		};
+		B4A7EB762D466F7F0001478C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R2LK952246;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = DorMiz.MyClinicTimeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyClinicTime;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B4A7EB452D466F7E0001478C /* Build configuration list for PBXProject "MyClinicTime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4A7EB6C2D466F7F0001478C /* Debug */,
+				B4A7EB6D2D466F7F0001478C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4A7EB6E2D466F7F0001478C /* Build configuration list for PBXNativeTarget "MyClinicTime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4A7EB6F2D466F7F0001478C /* Debug */,
+				B4A7EB702D466F7F0001478C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4A7EB712D466F7F0001478C /* Build configuration list for PBXNativeTarget "MyClinicTimeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4A7EB722D466F7F0001478C /* Debug */,
+				B4A7EB732D466F7F0001478C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4A7EB742D466F7F0001478C /* Build configuration list for PBXNativeTarget "MyClinicTimeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4A7EB752D466F7F0001478C /* Debug */,
+				B4A7EB762D466F7F0001478C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B4A7EB422D466F7E0001478C /* Project object */;
+}
