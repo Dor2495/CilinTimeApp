@@ -20,10 +20,11 @@ struct HomeView: View {
             
             VStack {
                 CustomeCalendarView(date: $date, selectedDate: $selectedDate)
-                VStack {
-                    ListView(selectedDate: selectedDate)
-                }
+                
+                ListView(selectedDate: selectedDate)
                 .padding()
+                
+                Spacer()
             }
             .navigationTitle("My Appointments")
         }
@@ -38,36 +39,25 @@ struct ListView: View {
     @State var appointmentsAtDay: [Appointment] = []
     
     var body: some View {
-        List {
-            if data.activeUser.appointments.count == 0 {
+        Group {
+            if let appointments = data.activeUser?.appointments, appointments.isEmpty {
                 Text("No appointments yet")
-            }
-            if selectedDate == nil {
-                ForEach($data.activeUser.appointments) { $appointment in
-                    NavigationLink(destination: AppointmentEditorView(appointment: $appointment)) {
-                        AppointmentRowView(appointment: appointment)
-                    }
-                }
-                .onDelete(perform: deleteAppointment)
             } else {
-                ForEach($appointmentsAtDay) { $appointment in
-                    NavigationLink(destination: AppointmentEditorView(appointment: $appointment)) {
-                        AppointmentRowView(appointment: appointment)
+                List {
+                    let appointmentsToShow = selectedDate == nil ? data.activeUser?.appointments : appointmentsAtDay
+                    ForEach(appointmentsToShow ?? []) { appointment in
+                        NavigationLink(destination: AppointmentEditorView(appointment: .constant(appointment))) {
+                            AppointmentRowView(appointment: appointment)
+                        }
                     }
                 }
-                .onDelete(perform: deleteAppointment)
+                .listStyle(.plain)
+                .scrollIndicators(.hidden)
+                .onChange(of: selectedDate) { newValue in
+                    appointmentsAtDay = data.activeUser?.appointments.filter { $0.date.startOfDay == newValue?.startOfDay } ?? []
+                }
             }
         }
-        .listStyle(.plain)
-        .scrollIndicators(.hidden)
-        .onChange(of: selectedDate) {
-            print("on appear")
-            appointmentsAtDay = data.activeUser.appointments.filter { $0.date.startOfDay == selectedDate?.startOfDay }
-        }
-    }
-    
-    func deleteAppointment(at offsets: IndexSet) {
-        data.deleteAppointment(at: offsets)
     }
 }
 

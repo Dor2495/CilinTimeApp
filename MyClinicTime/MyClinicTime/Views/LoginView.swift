@@ -32,29 +32,24 @@ struct LoginView: View {
                 }
                 .padding()
                 
-                Button {
+                Button(action: {
                     // MARK: log user in
-                    print("log in typed")
-                    guard let currentUser = data.getUserByEmail(email, password) else { return }
-                    data.activeUser = currentUser
-                    data.login()
-                    print(data.activeUser.firstName)
-                } label: {
+                    login(email: email, password: password)
+                    
+                }) {
                     Text("Log In")
                         .bold()
                         .frame(width: 300, height: 30)
                 }
                 .buttonStyle(.borderedProminent)
                 
-                VStack {
-                    HStack {
-                        Text("Don't have an account?")
-                            .foregroundStyle(.gray)
-                        NavigationLink(destination: SignUpView()) {
-                            Text("Sign Up")
-                                .foregroundColor(.blue)
-                                .font(.system(size: 16))
-                        }
+                HStack {
+                    Text("Don't have an account?")
+                        .foregroundStyle(.gray)
+                    NavigationLink(destination: SignUpView()) {
+                        Text("Sign Up")
+                            .foregroundColor(.blue)
+                            .font(.system(size: 16))
                     }
                 }
             }
@@ -62,6 +57,10 @@ struct LoginView: View {
             
             .navigationBarBackButtonHidden(true)
         }
+    }
+    
+    func login(email: String, password: String) {
+        data.login(email: email, password: password)
     }
 }
 

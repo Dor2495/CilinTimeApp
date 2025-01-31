@@ -41,11 +41,6 @@ struct CustomeCalendarView: View {
                                 .foregroundStyle(.secondary)
                                 
                             Spacer()
-                            if hasAppointment(on: day) {
-                                Circle()
-                                    .fill(Color.blue)
-                                    .frame(width: 8, height: 8)
-                            }
                         }
                         .frame(maxWidth: .infinity, minHeight: 40)
                         
@@ -81,10 +76,6 @@ struct CustomeCalendarView: View {
             return .red.opacity(0.3)
         }
         return color.opacity(0.3)
-    }
-    
-    func hasAppointment(on day: Date) -> Bool {
-        return data.activeUser.appointments.contains { $0.date.startOfDay == day.startOfDay }
     }
 }
 

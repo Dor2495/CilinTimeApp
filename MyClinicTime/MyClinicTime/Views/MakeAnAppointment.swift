@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MakeAnAppointment: View {
-    @EnvironmentObject var data: UserViewModel
+    @StateObject var availableAppointments = AppointmentsViewModel()
     @State var selectedAppointment: Appointment?
     @State private var showConfirmation: Bool = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(data.availableAppointment) { appointment in
+                ForEach(availableAppointments.availableAppointment) { appointment in
                     AppointmentRow(appointment: appointment)
                         .onTapGesture {
                             selectedAppointment = appointment

@@ -20,7 +20,7 @@ struct User: Identifiable, Equatable {
     var appointments: [Appointment] = []
     
     mutating func addAppointment(title: String, price: Double, date: Date) {
-        let newAppointment = Appointment(date: date, title: title, price: price, user: self)
+        let newAppointment = Appointment(date: date, title: title, price: price)
         appointments.append(newAppointment)
     }
     

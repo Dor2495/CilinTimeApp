@@ -50,11 +50,7 @@ struct SignUpView: View {
                 
                 Button {
                     // MARK: log user in
-                    print("Sign Up typed \(data.activeUser.isLoggedIn)")
-                    let newUser = User(firstName: firstName, lastName: lastName, dateOfBirth: dateOfBirth, email: email, password: password)
-                    data.addNewUser(newUser)
-                    data.activeUser = newUser
-                    data.login()
+                    
                 } label: {
                     Text("Sign Up")
                         .bold()

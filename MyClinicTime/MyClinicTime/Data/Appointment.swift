@@ -12,7 +12,6 @@ struct Appointment: Identifiable, Equatable {
     var date: Date
     var title: String
     var price: Double
-    var user: User?
     
     func getDayOfWeek() -> Int {
         return date.dayInt
@@ -21,7 +20,7 @@ struct Appointment: Identifiable, Equatable {
 
 struct mockData {
     var appointments = [
-        Appointment(date: Date(), title: "Pedicure", price: 100, user: nil),
-        Appointment(date: Date(), title: "Menicure", price: 200, user: nil)
+        Appointment(date: Date(), title: "Pedicure", price: 100),
+        Appointment(date: Date(), title: "Menicure", price: 200)
     ]
 }

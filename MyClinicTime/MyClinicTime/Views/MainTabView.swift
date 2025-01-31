@@ -18,30 +18,21 @@ struct MainTabView: View {
             //MARK: home tab
             HomeView()
                 .tabItem {
-                    VStack {
-                        Image(systemName: "house")
-                        Text("Home")
-                    }
+                    Label("Home", systemImage: "house")
                 }
                 .tag(1)
             
             //MARK: new app. tab
             MakeAnAppointment()
                 .tabItem {
-                    VStack {
-                        Image(systemName: "note.text.badge.plus")
-                        Text("New Appointment")
-                    }
+                    Label("New Appointment", systemImage: "note.text.badge.plus")
                 }
                 .tag(2)
             
             //MARK: profile tab
             ProfileView()
                 .tabItem {
-                    VStack {
-                        Image(systemName: "person")
-                        Text("Profile")
-                    }
+                    Label("Profile", systemImage: "person")
                 }
                 .tag(3)
         }

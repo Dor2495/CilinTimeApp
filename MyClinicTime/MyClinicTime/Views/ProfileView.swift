@@ -14,15 +14,11 @@ struct ProfileView: View {
         NavigationView {
             VStack {
                 Form {
-                    Section {
-                        Text("\(data.activeUser.firstName)")
-                        Text("\(data.activeUser.lastName)")
-                        Text("\(data.activeUser.email)")
-                        let bday = data.activeUser.dateOfBirth
-                        Text("\((bday))")
-                        
-                    } header: {
-                        Text("Details")
+                    Section(header: Text("Details")) {
+                        Text(data.activeUser!.firstName)
+                        Text(data.activeUser!.lastName)
+                        Text(data.activeUser!.email)
+                        Text("\(data.activeUser!.dateOfBirth)")
                     }
                 }
             }
@@ -30,10 +26,9 @@ struct ProfileView: View {
             .navigationTitle("Profile")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button {
-                        //MARK: log out
-                        data.logout()
-                    } label: {
+                    Button(action: {
+                        // MARK: log out
+                    }) {
                         Text("Logout")
                             .bold()
                     }
