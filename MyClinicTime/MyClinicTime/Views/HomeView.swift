@@ -24,8 +24,8 @@ struct HomeView: View {
                     ListView(selectedDate: selectedDate)
                 }
                 .padding()
-                .navigationTitle("My Appointments")
             }
+            .navigationTitle("My Appointments")
         }
         .ignoresSafeArea()
     }

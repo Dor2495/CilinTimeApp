@@ -26,6 +26,7 @@ struct ProfileView: View {
                     }
                 }
             }
+            
             .navigationTitle("Profile")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
