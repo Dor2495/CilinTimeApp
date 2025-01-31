@@ -12,3 +12,8 @@ I know that it will be an amazing adveture to learn new technics and improve my 
 Please share your ideas and comment with me ! I would love to learn from each of you.
 
 Stay tuned.
+
+
+TO-DO: 
+- fix issue that avabale to log in via sign up page without filling any details.
+- remove appointments from availables list after making a new appointment. 
