@@ -39,24 +39,27 @@ struct ListView: View {
     @State var appointmentsAtDay: [Appointment] = []
     
     var body: some View {
-        Group {
-            if let appointments = data.activeUser?.appointments, appointments.isEmpty {
-                Text("No appointments yet")
+        
+        var listToShow: [Appointment] {
+            if selectedDate != nil {
+                appointmentsAtDay
             } else {
-                List {
-                    let appointmentsToShow = selectedDate == nil ? data.activeUser?.appointments : appointmentsAtDay
-                    ForEach(appointmentsToShow ?? []) { appointment in
-                        NavigationLink(destination: AppointmentEditorView(appointment: .constant(appointment))) {
-                            AppointmentRowView(appointment: appointment)
-                        }
-                    }
-                }
-                .listStyle(.plain)
-                .scrollIndicators(.hidden)
-                .onChange(of: selectedDate) { newValue in
-                    appointmentsAtDay = data.activeUser?.appointments.filter { $0.date.startOfDay == newValue?.startOfDay } ?? []
-                }
+                data.activeUser!.appointments
             }
+        }
+        List {
+            if listToShow.isEmpty {
+                Text("No appointments found")
+            }
+            ForEach(listToShow) { appointment in
+                AppointmentRowView(appointment: appointment)
+            }
+        }
+        .listStyle(.inset)
+        .onChange(of: selectedDate) { oldValue, newValue in
+            appointmentsAtDay = data.activeUser?.appointments.filter {
+                $0.date.startOfDay == newValue?.startOfDay
+            } ?? []
         }
     }
 }

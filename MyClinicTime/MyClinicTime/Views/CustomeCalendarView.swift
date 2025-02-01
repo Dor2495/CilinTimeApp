@@ -21,15 +21,45 @@ struct CustomeCalendarView: View {
     
     var body: some View {
         VStack {
-            DatePicker("Select Month", selection: $date,  displayedComponents: [.date])
+            HStack {
+                Button(action: {
+                    date = Calendar.current.date(byAdding: .month, value: -1, to: date) ?? date
                 
+                }) {
+                    Image(systemName: "arrow.backward")
+                        .font(.system(size: 18, weight: .bold))
+                }
+                Spacer()
+                
+                VStack(alignment: .center) {
+                    Text(date.formatted(.dateTime.month(.wide)))
+                    Text(date.formatted(.dateTime.year(.defaultDigits)))
+                }
+                .font(.system(size: 18, weight: .bold))
+                .onTapGesture {
+                    selectedDate = nil
+                }
+                
+                Spacer()
+                Button(action: {
+                    date = Calendar.current.date(byAdding: .month, value: 1, to: date) ?? date
+               
+                }) {
+                    Image(systemName: "arrow.forward")
+                        .font(.system(size: 18, weight: .bold))
+                }
+            }
+            .padding()
+            
+            // Apply the offset to the calendar view
             HStack {
                 ForEach(daysOfWeek.indices, id: \.self) { index in
-                Text(daysOfWeek[index])
-                        .fontWeight(.black)
+                    Text(daysOfWeek[index])
+                        .fontWeight(.bold)
                         .frame(maxWidth: .infinity)
                 }
             }
+            
             LazyVGrid(columns: columns) {
                 ForEach(days, id: \.self) { day in
                     if day.monthInt != date.monthInt {
@@ -39,11 +69,21 @@ struct CustomeCalendarView: View {
                             Text(day.formatted(.dateTime.day()))
                                 .fontWeight(.bold)
                                 .foregroundStyle(.secondary)
+                                .transition(.scale)
                                 
+                            // Add a circle if there are appointments for the day
+                            if let appointments = data.activeUser?.appointments {
+                                let hasAppointment = appointments.contains { $0.date.startOfDay == day.startOfDay }
+                                if hasAppointment {
+                                    Circle()
+                                        .fill(Color.blue)
+                                        .frame(width: 8)
+                                }
+                            }
+                            
                             Spacer()
                         }
                         .frame(maxWidth: .infinity, minHeight: 40)
-                        
                         .padding(.vertical, 5)
                         .background(
                             RoundedRectangle(cornerRadius: 5)
@@ -55,9 +95,6 @@ struct CustomeCalendarView: View {
                         }
                     }
                 }
-            }
-            .swipeActions(edge: .trailing) {
-                
             }
         }
         .padding()

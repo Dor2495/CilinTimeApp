@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct Confirmation: View {
-    var appointment: Appointment
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var data: UserViewModel
+    @EnvironmentObject var appointmentsViewModel: AppointmentsViewModel
+    
+    var appointment: Appointment
     
     var body: some View {
         VStack(spacing: 20) {
@@ -34,7 +37,12 @@ struct Confirmation: View {
             
             Button(action: {
                 // Action to confirm the appointment
-                confirmAppointment()
+                if let index = appointmentsViewModel.availableAppointment.firstIndex(of: appointment) {
+                    appointmentsViewModel.availableAppointment.remove(at: index) // Remove from available
+                    appointmentsViewModel.unAvailableAppointment.append(appointment) // Add to unavailable
+                    data.activeUser?.appointments.append(appointment)// Add to user's appointments
+                }
+                presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Confirm Booking")
                     .font(.headline)
@@ -66,15 +74,12 @@ struct Confirmation: View {
         .navigationTitle("Confirmation")
         .navigationBarTitleDisplayMode(.inline)
     }
-    
-    private func confirmAppointment() {
-        // Logic to confirm the appointment
-        print("Appointment confirmed for \(appointment.title) on \(User.dateFormatter().string(from: appointment.date))")
-        // Dismiss the confirmation view after confirming
-        presentationMode.wrappedValue.dismiss()
-    }
 }
 
 #Preview {
+    let user = User(firstName: "firstname", lastName: "lastName", dateOfBirth: Date.now, email: "email@gmail.com", password: "password")
     Confirmation(appointment: Appointment(date: User.dateFormatter().date(from: "2025.12.08")!, title: "Spa Treatment", price: 300))
+        .environmentObject(AppointmentsViewModel())
+        .environmentObject(UserViewModel(user: user))
+        
 }

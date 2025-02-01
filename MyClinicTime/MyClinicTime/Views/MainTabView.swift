@@ -43,4 +43,5 @@ struct MainTabView: View {
     let user = User(firstName: "firstname", lastName: "lastName", dateOfBirth: Date.now, email: "email@gmail.com", password: "password")
     MainTabView()
         .environmentObject(UserViewModel(user: user))
+        .environmentObject(AppointmentsViewModel())
 }

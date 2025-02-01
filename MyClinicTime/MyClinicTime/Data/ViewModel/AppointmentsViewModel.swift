@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class AppointmentsViewModel: ObservableObject {
-    @Published private(set) var availableAppointment: [Appointment] = [
+    @Published  var availableAppointment: [Appointment] = [
         Appointment(date: User.dateFormatter().date(from: "2025.12.01")!, title: "Pedicure", price: 100),
         Appointment(date: User.dateFormatter().date(from: "2025.12.02")!, title: "Menicure", price: 200),
         Appointment(date: User.dateFormatter().date(from: "2025.12.03")!, title: "Facial", price: 150),
@@ -20,5 +20,5 @@ class AppointmentsViewModel: ObservableObject {
         Appointment(date: User.dateFormatter().date(from: "2025.12.08")!, title: "Spa Treatment", price: 300),
     ]
     
-    @Published private(set) var unAvailableAppointment: [Appointment] = []
+    @Published  var unAvailableAppointment: [Appointment] = []
 }

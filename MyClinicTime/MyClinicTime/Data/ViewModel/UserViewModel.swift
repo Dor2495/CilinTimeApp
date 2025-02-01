@@ -10,7 +10,7 @@ import SwiftUI
 
 class UserViewModel: ObservableObject {
     @Published var activeUser: User?
-    @Published var activeUserAppointments: [Appointment] = []
+//    @Published var activeUserAppointments: [Appointment] = []
     
     @Published private(set) var allUsers: [User] = [
         User(firstName: "Dor", lastName: "Mizrachi", dateOfBirth: Date.now, email: "Dor2495@gmail.com", password: "password"),
@@ -27,7 +27,6 @@ class UserViewModel: ObservableObject {
         }
         self.activeUser = user
         self.activeUser?.isLoggedIn = true
-        self.activeUserAppointments = user.appointments
         return true
     }
     

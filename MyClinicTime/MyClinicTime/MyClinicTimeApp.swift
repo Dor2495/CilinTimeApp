@@ -9,7 +9,8 @@ import SwiftUI
 
 @main
 struct MyClinicTimeApp: App {
-    @StateObject var data = UserViewModel(user: User(firstName: "default", lastName: "default", dateOfBirth: Date.now, email: "email@email.com", password: "password"))
+    @StateObject var data = UserViewModel(user: User(firstName: "default", lastName: "default", dateOfBirth: Date.now, email: "email@email.com", password: "password", isLoggedIn: true))
+    @StateObject var appointments = AppointmentsViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -20,5 +21,6 @@ struct MyClinicTimeApp: App {
             }
         }
         .environmentObject(data)
+        .environmentObject(appointments)
     }
 }

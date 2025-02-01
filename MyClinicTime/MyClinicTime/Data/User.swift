@@ -17,7 +17,9 @@ struct User: Identifiable, Equatable {
     var password: String
     
     var isLoggedIn: Bool = false
-    var appointments: [Appointment] = []
+    var appointments: [Appointment] = [
+        Appointment(date: User.dateFormatter().date(from: "2025.02.01")!, title: "Pedicure", price: 100)
+    ]
     
     mutating func addAppointment(title: String, price: Double, date: Date) {
         let newAppointment = Appointment(date: date, title: title, price: price)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MakeAnAppointment: View {
-    @StateObject var availableAppointments = AppointmentsViewModel()
+    @EnvironmentObject var availableAppointments: AppointmentsViewModel
     @State var selectedAppointment: Appointment?
     @State private var showConfirmation: Bool = false
     
@@ -73,8 +73,5 @@ struct AppointmentRow: View {
     let user = User(firstName: "firstname", lastName: "lastName", dateOfBirth: Date.now, email: "email@gmail.com", password: "password")
     MakeAnAppointment()
         .environmentObject(UserViewModel(user: user))
-}
-
-#Preview{
-    AppointmentRow(appointment: Appointment(date: User.dateFormatter().date(from: "2025.12.08")!, title: "Spa Treatment", price: 300))
+        .environmentObject(AppointmentsViewModel())
 }
