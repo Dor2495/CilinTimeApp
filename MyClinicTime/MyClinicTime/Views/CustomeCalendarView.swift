@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomeCalendarView: View {
-    @EnvironmentObject var data: UserViewModel
+    @Environment(ViewModel.self) var viewModel
     
     @Binding var date: Date
     @Binding var selectedDate: Date?
@@ -72,8 +72,8 @@ struct CustomeCalendarView: View {
                                 .transition(.scale)
                                 
                             // Add a circle if there are appointments for the day
-                            if let appointments = data.activeUser?.appointments {
-                                let hasAppointment = appointments.contains { $0.date.startOfDay == day.startOfDay }
+                            if !viewModel.user.appointments.isEmpty {
+                                let hasAppointment = viewModel.user.appointments.contains { $0.date.startOfDay == day.startOfDay }
                                 if hasAppointment {
                                     Circle()
                                         .fill(Color.blue)
@@ -119,7 +119,7 @@ struct CustomeCalendarView: View {
 #Preview {
     @Previewable @State var selectedDate: Date? = nil
     @Previewable @State var date = Date.now
-    let user = User(firstName: "firstname", lastName: "lastName", dateOfBirth: Date.now, email: "email@gmail.com", password: "password")
+    let user = ViewModel().user
     CustomeCalendarView(date: $date, selectedDate: $selectedDate)
-        .environmentObject(UserViewModel(user: user))
+        .environment(ViewModel())
 }

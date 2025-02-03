@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var data: UserViewModel
+    @Environment(ViewModel.self) var viewModel
     
     var body: some View {
         NavigationStack {
@@ -18,7 +18,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    let user = User(firstName: "firdtname", lastName: "lastName", dateOfBirth: Date.now, email: "email@gmail.com", password: "password")
     ContentView()
-        .environmentObject(UserViewModel(user: user))
+        .environment(ViewModel())
 }

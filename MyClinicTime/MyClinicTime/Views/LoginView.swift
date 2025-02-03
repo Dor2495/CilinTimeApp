@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var data: UserViewModel
+    @Environment(ViewModel.self) var viewModel
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -60,7 +60,7 @@ struct LoginView: View {
     }
     
     func login(email: String, password: String) {
-        data.login(email: email, password: password)
+        // MARK: - login function
     }
 }
 
@@ -85,7 +85,6 @@ struct UserInput: View {
 }
 
 #Preview {
-    let user = User(firstName: "firdtname", lastName: "lastName", dateOfBirth: Date.now, email: "email@gmail.com", password: "password")
     LoginView()
-        .environmentObject(UserViewModel(user: user))
+        .environment(ViewModel())
 }
