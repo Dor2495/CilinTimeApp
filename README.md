@@ -13,7 +13,12 @@ Please share your ideas and comment with me ! I would love to learn from each of
 
 Stay tuned.
 
+UPDATED:
+- Changed from observableObject to Observable.
+-  Added functions to read and write data to JSON files.
 
-TO-DO: 
+TODO:
+- Add functions to ViewModel to save data.
+- Check for WRITING data into JSON file
 - fix issue that avabale to log in via sign up page without filling any details.
 - remove appointments from availables list after making a new appointment. 
