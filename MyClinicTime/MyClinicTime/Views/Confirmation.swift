@@ -9,8 +9,7 @@ import SwiftUI
 
 struct Confirmation: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var data: UserViewModel
-    @EnvironmentObject var appointmentsViewModel: AppointmentsViewModel
+    @Environment(ViewModel.self) var viewModel
     
     var appointment: Appointment
     
@@ -25,7 +24,7 @@ struct Confirmation: View {
                 .font(.headline)
                 .padding(.bottom, 5)
             
-            Text("Date: \(User.dateFormatter().string(from: appointment.date))")
+            Text("Date: \(appointment.date, style: .date)")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
@@ -36,12 +35,8 @@ struct Confirmation: View {
             Spacer()
             
             Button(action: {
-                // Action to confirm the appointment
-                if let index = appointmentsViewModel.availableAppointment.firstIndex(of: appointment) {
-                    appointmentsViewModel.availableAppointment.remove(at: index) // Remove from available
-                    appointmentsViewModel.unAvailableAppointment.append(appointment) // Add to unavailable
-                    data.activeUser?.appointments.append(appointment)// Add to user's appointments
-                }
+                // MARK: - confirm appointment
+                
                 presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Confirm Booking")
@@ -77,9 +72,7 @@ struct Confirmation: View {
 }
 
 #Preview {
-    let user = User(firstName: "firstname", lastName: "lastName", dateOfBirth: Date.now, email: "email@gmail.com", password: "password")
-    Confirmation(appointment: Appointment(date: User.dateFormatter().date(from: "2025.12.08")!, title: "Spa Treatment", price: 300))
-        .environmentObject(AppointmentsViewModel())
-        .environmentObject(UserViewModel(user: user))
+    Confirmation(appointment: ViewModel().appointments[0])
+        .environment(ViewModel())
         
 }

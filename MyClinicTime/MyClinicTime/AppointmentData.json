@@ -1,0 +1,14 @@
+[
+    {
+        "id": "123e4567-e89b-12d3-a456-426614174000",
+        "date": "2025-10-01T10:00:00Z",
+        "title": "Doctor's Appointment",
+        "price": 150.0
+    },
+    {
+        "id": "123e4567-e89b-12d3-a456-426614174002",
+        "date": "2025-10-15T14:00:00Z",
+        "title": "Dentist Appointment",
+        "price": 100.0
+    }
+]

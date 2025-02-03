@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var data: UserViewModel
+    @Environment(ViewModel.self) var viewModel
     
     var body: some View {
         NavigationView {
             VStack {
                 Form {
                     Section(header: Text("Details")) {
-                        Text(data.activeUser!.firstName)
-                        Text(data.activeUser!.lastName)
-                        Text(data.activeUser!.email)
-                        Text("\(data.activeUser!.dateOfBirth)")
+                        Text(viewModel.user.firstName)
+                        Text(viewModel.user.lastName)
+                        Text(viewModel.user.email)
+                        Text("\(viewModel.user.dateOfBirth)")
                     }
                 }
             }
@@ -27,7 +27,7 @@ struct ProfileView: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: {
-                        // MARK: log out
+                        // MARK: - log out
                     }) {
                         Text("Logout")
                             .bold()
@@ -40,7 +40,6 @@ struct ProfileView: View {
 }
 
 #Preview {
-    let user = User(firstName: "firstname", lastName: "lastName", dateOfBirth: Date.now, email: "email@gmail.com", password: "password")
     ProfileView()
-        .environmentObject(UserViewModel(user: user))
+        .environment(ViewModel())
 }

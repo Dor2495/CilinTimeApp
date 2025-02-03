@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var data: UserViewModel
+    @Environment(ViewModel.self) var viewModel
     
     @State private var showCalendar: Bool = false
     @State private var date = Date.now
@@ -33,7 +33,7 @@ struct HomeView: View {
 }
 
 struct ListView: View {
-    @EnvironmentObject var data: UserViewModel
+    @Environment(ViewModel.self) var viewModel
     
     var selectedDate: Date?
     @State var appointmentsAtDay: [Appointment] = []
@@ -44,7 +44,7 @@ struct ListView: View {
             if selectedDate != nil {
                 appointmentsAtDay
             } else {
-                data.activeUser!.appointments
+                viewModel.user.appointments
             }
         }
         List {
@@ -57,9 +57,9 @@ struct ListView: View {
         }
         .listStyle(.inset)
         .onChange(of: selectedDate) { oldValue, newValue in
-            appointmentsAtDay = data.activeUser?.appointments.filter {
+            appointmentsAtDay = viewModel.user.appointments.filter {
                 $0.date.startOfDay == newValue?.startOfDay
-            } ?? []
+            }
         }
     }
 }
@@ -82,7 +82,6 @@ struct AppointmentRowView: View {
 }
 
 #Preview {
-    let user = User(firstName: "firstname", lastName: "lastName", dateOfBirth: Date.now, email: "email@gmail.com", password: "password")
     HomeView()
-        .environmentObject(UserViewModel(user: user))
+        .environment(ViewModel())
 }

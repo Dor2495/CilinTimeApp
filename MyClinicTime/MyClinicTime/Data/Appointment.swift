@@ -1,26 +1,29 @@
-//
-//  Appointment.swift
-//  MyClinicTime
-//
-//  Created by Dor Mizrachi on 26/01/2025.
-//
-
 import Foundation
 
-struct Appointment: Identifiable, Equatable {
-    var id: String = UUID().uuidString
+struct Appointment: Identifiable, Equatable, Decodable {
+    var id: String
     var date: Date
     var title: String
     var price: Double
     
-    func getDayOfWeek() -> Int {
-        return date.dayInt
+    // Custom date decoding
+    private enum CodingKeys: String, CodingKey {
+        case id, date, title, price
     }
-}
-
-struct mockData {
-    var appointments = [
-        Appointment(date: Date(), title: "Pedicure", price: 100),
-        Appointment(date: Date(), title: "Menicure", price: 200)
-    ]
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        
+        // Custom date decoding for date
+        let dateString = try container.decode(String.self, forKey: .date)
+        let dateFormatter = ISO8601DateFormatter() // Adjusted for appointment date format
+        guard let date = dateFormatter.date(from: dateString) else {
+            throw DecodingError.dataCorruptedError(forKey: .date, in: container, debugDescription: "Invalid date format")
+        }
+        self.date = date
+        
+        title = try container.decode(String.self, forKey: .title)
+        price = try container.decode(Double.self, forKey: .price)
+    }
 }

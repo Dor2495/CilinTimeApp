@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @EnvironmentObject var data: UserViewModel
+    @Environment(ViewModel.self) var viewModel
     
     @State private var firstName: String = ""
     @State private var lastName: String = ""
@@ -78,7 +78,6 @@ struct SignUpView: View {
 }
 
 #Preview {
-    let user = User(firstName: "firdtname", lastName: "lastName", dateOfBirth: Date.now, email: "email@gmail.com", password: "password")
     SignUpView()
-        .environmentObject(UserViewModel(user: user))
+        .environment(ViewModel())
 }

@@ -11,7 +11,7 @@ import SwiftUI
 
 struct AppointmentEditorView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var data: UserViewModel
+    @Environment(ViewModel.self) var viewModel
     
     @Binding var appointment: Appointment
 
@@ -40,6 +40,5 @@ struct AppointmentEditorView: View {
 }
 
 #Preview {
-    @Previewable @State var app = Appointment(date: Date(), title: "Test", price: 300.0)
-    AppointmentEditorView(appointment: $app)
+//    AppointmentEditorView()
 }
