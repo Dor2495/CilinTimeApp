@@ -119,7 +119,7 @@ struct CustomeCalendarView: View {
 #Preview {
     @Previewable @State var selectedDate: Date? = nil
     @Previewable @State var date = Date.now
-    let user = ViewModel().user
+    let user = ViewModel().activeUser
     CustomeCalendarView(date: $date, selectedDate: $selectedDate)
         .environment(ViewModel())
 }

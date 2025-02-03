@@ -9,8 +9,14 @@ import Foundation
 
 @Observable
 class ViewModel {
-    var user: User = load("UserData.json")
+    var users: [User] = load("UserData.json")
     var appointments: [Appointment] = load("AppointmentData.json")
+    var activeUser: User?
+    
+    var active: User {
+        users.first!
+    }
+    
 }
 
 func load<T: Decodable>(_ filename: String) -> T {

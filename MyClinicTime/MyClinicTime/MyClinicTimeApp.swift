@@ -13,7 +13,7 @@ struct MyClinicTimeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if viewModel.user.isLoggedIn {
+            if viewModel.active.isLoggedIn {
                 MainTabView()
             } else {
                 ContentView()

@@ -28,8 +28,9 @@ struct HomeView: View {
                         title: "New Appointment",
                         price: 100
                     )
-                    viewModel.user.appointments.append(appointmentToAdd)
-                    saveUser(viewModel.user)
+                    viewModel.activeUser = viewModel.active
+                    viewModel.activeUser!.appointments.append(appointmentToAdd)
+                    saveUser(viewModel.activeUser!)
                     print("Added: \(appointmentToAdd)")
                 }
                 
@@ -57,7 +58,7 @@ struct ListView: View {
             if selectedDate != nil {
                 appointmentsAtDay
             } else {
-                viewModel.user.appointments
+                viewModel.active.appointments
             }
         }
         List {
@@ -70,7 +71,7 @@ struct ListView: View {
         }
         .listStyle(.inset)
         .onChange(of: selectedDate) { oldValue, newValue in
-            appointmentsAtDay = viewModel.user.appointments.filter {
+            appointmentsAtDay = viewModel.active.appointments.filter {
                 $0.date.startOfDay == newValue?.startOfDay
             }
         }
