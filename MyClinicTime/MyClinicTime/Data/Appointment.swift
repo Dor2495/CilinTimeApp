@@ -1,11 +1,18 @@
 import Foundation
 
-struct Appointment: Identifiable, Equatable, Decodable {
+struct Appointment: Identifiable, Equatable, Decodable, Encodable {
     var id: String
     var date: Date
     var title: String
     var price: Double
     
+    init(date: Date, title: String, price: Double) {
+        self.id = UUID().uuidString
+        self.date = date
+        self.title = title
+        self.price = price
+    }
+
     // Custom date decoding
     private enum CodingKeys: String, CodingKey {
         case id, date, title, price

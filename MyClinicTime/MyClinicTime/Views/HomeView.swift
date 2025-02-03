@@ -21,6 +21,19 @@ struct HomeView: View {
             VStack {
                 CustomeCalendarView(date: $date, selectedDate: $selectedDate)
                 
+                // MARK: Add appointment to file
+                Button("ADD") {
+                    let appointmentToAdd: Appointment = .init(
+                        date: Date(),
+                        title: "New Appointment",
+                        price: 100
+                    )
+                    viewModel.user.appointments.append(appointmentToAdd)
+                    saveUser(viewModel.user)
+                    print("Added: \(appointmentToAdd)")
+                }
+                
+                
                 ListView(selectedDate: selectedDate)
                 .padding()
                 

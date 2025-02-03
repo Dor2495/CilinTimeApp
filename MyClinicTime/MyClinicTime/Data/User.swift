@@ -1,6 +1,6 @@
 import Foundation
 
-struct User: Identifiable, Equatable, Decodable {
+struct User: Identifiable, Equatable, Decodable, Encodable {
     var id: String
     var firstName: String
     var lastName: String
@@ -9,6 +9,17 @@ struct User: Identifiable, Equatable, Decodable {
     var password: String
     var isLoggedIn: Bool
     var appointments: [Appointment]
+
+    init(firstName: String, lastName: String, dateOfBirth: Date, email: String, password: String) {
+        self.id = UUID().uuidString
+        self.firstName = firstName
+        self.lastName = lastName
+        self.dateOfBirth = dateOfBirth
+        self.email = email
+        self.password = password
+        self.isLoggedIn = false
+        self.appointments = []
+    }
     
     // Custom date decoding
     private enum CodingKeys: String, CodingKey {
