@@ -19,9 +19,9 @@ struct AppointmentEditorView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section(header: Text("Details")) {
+                Section {
                     TextField("Title", text: $appointment.title)
-                    DatePicker("Date", selection: $appointment.date, displayedComponents: .date)
+//                    DatePicker("Date", selection: $appointment.date, displayedComponents: .date)
                     TextField("Price", value: $appointment.price, formatter: NumberFormatter())
                 }
             }

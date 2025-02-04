@@ -24,9 +24,9 @@ struct Confirmation: View {
                 .font(.headline)
                 .padding(.bottom, 5)
             
-            Text("Date: \(appointment.date)")
-                .font(.subheadline)
-                .foregroundColor(.gray)
+//            Text("Date: \(appointment.date)")
+//                .font(.subheadline)
+//                .foregroundColor(.gray)
             
             Text("Price: $\(appointment.price, specifier: "%.2f")")
                 .font(.subheadline)

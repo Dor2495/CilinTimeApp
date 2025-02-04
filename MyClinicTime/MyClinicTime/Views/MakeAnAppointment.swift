@@ -55,9 +55,9 @@ struct AppointmentRow: View {
             VStack(alignment: .leading) {
                 Text(appointment.title)
                     .font(.headline)
-                Text(appointment.date.toString())
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+//                Text(appointment.date.toString())
+//                    .font(.subheadline)
+//                    .foregroundColor(.gray)
             }
             Spacer()
             Text("$\(appointment.price, specifier: "%.2f")")

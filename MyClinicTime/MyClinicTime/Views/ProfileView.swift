@@ -16,9 +16,9 @@ struct ProfileView: View {
             VStack {
                 Form {
                     Section(header: Text("Details")) {
-                        Text(userviewModel.allUsers[0].firstName)
-                        Text(userviewModel.allUsers[0].lastName)
-                        Text(userviewModel.allUsers[0].email)
+//                        Text(userviewModel.allUsers[0].firstName)
+//                        Text(userviewModel.allUsers[0].lastName)
+//                        Text(userviewModel.allUsers[0].email)
 //                        Text("\(userviewModel.allUsers[0].dateOfBirth)")
                     }
                 }

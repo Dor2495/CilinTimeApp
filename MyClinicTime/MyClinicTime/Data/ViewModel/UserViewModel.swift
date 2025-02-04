@@ -31,6 +31,7 @@ class UserViewModel {
                 let data = try Data(contentsOf: url)
                 let decodedUsers = try JSONDecoder().decode([User].self, from: data)
                 self.allUsers = decodedUsers
+                print(allUsers)
             } catch {
                 print("Error loading users: \(error)") // Important: Handle errors
                 // Consider showing an alert to the user or using a default value if loading fails.
@@ -38,14 +39,14 @@ class UserViewModel {
         }
     
     private func saveUsers() {
-            guard let url = usersFileURL else { return }
-            do {
-                let encodedData = try JSONEncoder().encode(allUsers)
-                try encodedData.write(to: url)
-            } catch {
-                print("Error saving users: \(error)") // Important: Handle errors
-            }
+        guard let url = usersFileURL else { return }
+        do {
+            let encodedData = try JSONEncoder().encode(allUsers)
+            try encodedData.write(to: url)
+        } catch {
+            print("Error saving users: \(error)") // Important: Handle errors
         }
+    }
 }
 
 

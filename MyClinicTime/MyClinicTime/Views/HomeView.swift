@@ -24,6 +24,17 @@ struct HomeView: View {
                 
                 // MARK: Add appointment to file
                 Button("ADD") {
+                    let AppointmentToAdd = Appointment(
+                        id: UUID().uuidString,
+                        title: "title",
+                        price: 200
+                    )
+                    appointmentviewModel.allAppointments.append(AppointmentToAdd)
+                    
+                    let userToAdd = User(id: UUID().uuidString, firstName: "firstName", lastName: "lastName", email: "email@gmail.com", password: "123456", isLoggedIn: true, appointments: [AppointmentToAdd])
+                    
+                    userviewModel.allUsers.append(userToAdd)
+                    
                     print(userviewModel.allUsers)
                     print(appointmentviewModel.allAppointments)
                 }
@@ -62,13 +73,16 @@ struct ListView: View {
             ForEach(listToShow) { appointment in
                 AppointmentRowView(appointment: appointment)
             }
-        }
-        .listStyle(.inset)
-        .onChange(of: selectedDate) { oldValue, newValue in
-            appointmentsAtDay = appointmentviewModel.allAppointments.filter {
-                $0.date.startOfDay == newValue?.startOfDay
+            .onDelete { indexSet in
+                appointmentviewModel.allAppointments.remove(atOffsets: indexSet)
             }
         }
+        .listStyle(.inset)
+//        .onChange(of: selectedDate) { oldValue, newValue in
+//            appointmentsAtDay = appointmentviewModel.allAppointments.filter {
+//                $0.date.startOfDay == newValue?.startOfDay
+//            }
+//        }
     }
 }
 
@@ -89,8 +103,8 @@ struct AppointmentRowView: View {
             VStack(alignment: .leading) {
                 Text(appointment.title)
                     .font(.system(size: 18, weight: .medium, design: .serif))
-                Text(appointment.date.toString())
-                    .font(.system(size: 14, weight: .regular, design: .serif))
+//                Text(appointment.date.toString())
+//                    .font(.system(size: 14, weight: .regular, design: .serif))
             }
             Spacer()
             Text("\(appointment.price.formatted(.currency(code: "NIS")))")
