@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomeCalendarView: View {
-    @Environment(ViewModel.self) var viewModel
+    @Environment(UserViewModel.self) var userviewModel
     
     @Binding var date: Date
     @Binding var selectedDate: Date?
@@ -116,7 +116,8 @@ struct CustomeCalendarView: View {
 #Preview {
     @Previewable @State var selectedDate: Date? = nil
     @Previewable @State var date = Date.now
-    let user = ViewModel().active
+    let user = UserViewModel().allUsers.first!
     CustomeCalendarView(date: $date, selectedDate: $selectedDate)
-        .environment(ViewModel())
+        .environment(UserViewModel())
+        .environment(AppointmentViewModel())
 }

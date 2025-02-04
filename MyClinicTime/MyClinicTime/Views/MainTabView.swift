@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @Environment(ViewModel.self) var viewModel
     
     @State private var selectedTab: Int = 1
     
@@ -41,5 +40,6 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
-        .environment(ViewModel())
+        .environment(UserViewModel())
+        .environment(AppointmentViewModel())
 }

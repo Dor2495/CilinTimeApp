@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(ViewModel.self) var viewModel
+    @Environment(UserViewModel.self) var userviewModel: UserViewModel
+    @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
     
     @State private var showCalendar: Bool = false
     @State private var date = Date.now
@@ -23,15 +24,8 @@ struct HomeView: View {
                 
                 // MARK: Add appointment to file
                 Button("ADD") {
-                    let appointmentToAdd: Appointment = .init(
-                        date: Date(),
-                        title: "New Appointment",
-                        price: 100
-                    )
-                    viewModel.activeUser = viewModel.active
-                    viewModel.activeUser!.appointments.append(appointmentToAdd)
-                    saveUser(viewModel.activeUser!)
-                    print("Added: \(appointmentToAdd)")
+                    print(userviewModel.allUsers)
+                    print(appointmentviewModel.allAppointments)
                 }
                 
                 
@@ -47,7 +41,7 @@ struct HomeView: View {
 }
 
 struct ListView: View {
-    @Environment(ViewModel.self) var viewModel
+    @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
     
     var selectedDate: Date?
     @State var appointmentsAtDay: [Appointment] = []
@@ -58,7 +52,7 @@ struct ListView: View {
             if selectedDate != nil {
                 appointmentsAtDay
             } else {
-                viewModel.active.appointments
+                appointmentviewModel.allAppointments
             }
         }
         List {
@@ -71,10 +65,20 @@ struct ListView: View {
         }
         .listStyle(.inset)
         .onChange(of: selectedDate) { oldValue, newValue in
-            appointmentsAtDay = viewModel.active.appointments.filter {
+            appointmentsAtDay = appointmentviewModel.allAppointments.filter {
                 $0.date.startOfDay == newValue?.startOfDay
             }
         }
+    }
+}
+
+extension Date {
+    func toDate(string: String, format: String = "yyyy-MM-dd") -> Date?  {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.date(from: string)
     }
 }
 
@@ -85,7 +89,7 @@ struct AppointmentRowView: View {
             VStack(alignment: .leading) {
                 Text(appointment.title)
                     .font(.system(size: 18, weight: .medium, design: .serif))
-                Text(appointment.date.formatted())
+                Text(appointment.date.toString())
                     .font(.system(size: 14, weight: .regular, design: .serif))
             }
             Spacer()
@@ -97,5 +101,6 @@ struct AppointmentRowView: View {
 
 #Preview {
     HomeView()
-        .environment(ViewModel())
+        .environment(UserViewModel())
+        .environment(AppointmentViewModel())
 }

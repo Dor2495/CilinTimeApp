@@ -9,16 +9,18 @@ import SwiftUI
 
 @main
 struct MyClinicTimeApp: App {
-    @State var viewModel = ViewModel()
+    @State var UserviewModel = UserViewModel()
+    @State var AppointmentviewModel = AppointmentViewModel()
     
     var body: some Scene {
         WindowGroup {
-            if viewModel.active.isLoggedIn {
+//            if viewModel.active.isLoggedIn {
                 MainTabView()
-            } else {
-                ContentView()
-            }
+//            } else {
+//                ContentView()
+//            }
         }
-        .environment(viewModel)
+        .environment(UserviewModel)
+        .environment(AppointmentviewModel)
     }
 }

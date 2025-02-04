@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @Environment(ViewModel.self) var viewModel
+    @Environment(UserViewModel.self) var userviewModel: UserViewModel
+    @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
     
     @State private var firstName: String = ""
     @State private var lastName: String = ""
@@ -79,5 +80,6 @@ struct SignUpView: View {
 
 #Preview {
     SignUpView()
-        .environment(ViewModel())
+        .environment(UserViewModel())
+        .environment(AppointmentViewModel())
 }

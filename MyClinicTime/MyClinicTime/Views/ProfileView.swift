@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @Environment(ViewModel.self) var viewModel
+    @Environment(UserViewModel.self) var userviewModel: UserViewModel
+    @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
     
     var body: some View {
         NavigationView {
             VStack {
                 Form {
                     Section(header: Text("Details")) {
-                        Text(viewModel.users[0].firstName)
-                        Text(viewModel.users[0].lastName)
-                        Text(viewModel.users[0].email)
-                        Text("\(viewModel.users[0].dateOfBirth)")
+                        Text(userviewModel.allUsers[0].firstName)
+                        Text(userviewModel.allUsers[0].lastName)
+                        Text(userviewModel.allUsers[0].email)
+//                        Text("\(userviewModel.allUsers[0].dateOfBirth)")
                     }
                 }
             }
@@ -41,5 +42,6 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView()
-        .environment(ViewModel())
+        .environment(UserViewModel())
+        .environment(AppointmentViewModel())
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Confirmation: View {
     @Environment(\.presentationMode) var presentationMode
-    @Environment(ViewModel.self) var viewModel
+    @Environment(AppointmentViewModel.self) var appointmentviewModel
     
     var appointment: Appointment
     
@@ -24,7 +24,7 @@ struct Confirmation: View {
                 .font(.headline)
                 .padding(.bottom, 5)
             
-            Text("Date: \(appointment.date, style: .date)")
+            Text("Date: \(appointment.date)")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
@@ -72,7 +72,8 @@ struct Confirmation: View {
 }
 
 #Preview {
-    Confirmation(appointment: ViewModel().appointments[0])
-        .environment(ViewModel())
+    Confirmation(appointment: AppointmentViewModel().allAppointments[0])
+        .environment(UserViewModel())
+        .environment(AppointmentViewModel())
         
 }

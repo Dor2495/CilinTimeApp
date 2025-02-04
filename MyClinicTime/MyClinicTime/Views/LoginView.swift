@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    @Environment(ViewModel.self) var viewModel
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -86,5 +85,6 @@ struct UserInput: View {
 
 #Preview {
     LoginView()
-        .environment(ViewModel())
+        .environment(UserViewModel())
+        .environment(AppointmentViewModel())
 }

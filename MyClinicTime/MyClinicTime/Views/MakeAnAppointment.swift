@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MakeAnAppointment: View {
-    @Environment(ViewModel.self) var viewModel
+    @Environment(AppointmentViewModel.self) var appointmentviewModel
     
     @State var selectedAppointment: Appointment?
     @State private var showConfirmation: Bool = false
@@ -16,7 +16,7 @@ struct MakeAnAppointment: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.appointments) { appointment in
+                ForEach(appointmentviewModel.allAppointments) { appointment in
                     AppointmentRow(appointment: appointment)
                         .onTapGesture {
                             selectedAppointment = appointment
@@ -55,7 +55,7 @@ struct AppointmentRow: View {
             VStack(alignment: .leading) {
                 Text(appointment.title)
                     .font(.headline)
-                Text(appointment.date.formatted(date: .long, time: .omitted))
+                Text(appointment.date.toString())
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
@@ -72,5 +72,6 @@ struct AppointmentRow: View {
 
 #Preview {
     MakeAnAppointment()
-        .environment(ViewModel())
+        .environment(UserViewModel())
+        .environment(AppointmentViewModel())
 }

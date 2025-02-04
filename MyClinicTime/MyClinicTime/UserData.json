@@ -3,7 +3,6 @@
         "id": "123e4567-e89b-12d3-a456-426614174001",
         "firstName": "John",
         "lastName": "Doe",
-        "dateOfBirth": "1990-01-01",
         "email": "john.doe@example.com",
         "password": "securepassword123",
         "isLoggedIn": true,
@@ -11,7 +10,7 @@
         [
             {
                 "id": "123e4567-e89b-12d3-a456-426614174000",
-                "date": "2025-02-01T10:00:00Z",
+                "date": "2025-02-01",
                 "title": "Doctor's Appointment",
                 "price": 150.0
             },

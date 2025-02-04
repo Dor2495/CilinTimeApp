@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(ViewModel.self) var viewModel
-    
+    @Environment(UserViewModel.self) var userviewModel: UserViewModel
+    @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
     var body: some View {
         NavigationStack {
             LoginView()
@@ -19,5 +19,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environment(ViewModel())
+//        .environment(userviewModel)
+//        .environment(appointmentviewModel)
 }
