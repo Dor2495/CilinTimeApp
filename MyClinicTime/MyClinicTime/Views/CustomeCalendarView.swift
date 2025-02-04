@@ -72,14 +72,11 @@ struct CustomeCalendarView: View {
                                 .transition(.scale)
                                 
                             // Add a circle if there are appointments for the day
-                            if !viewModel.user.appointments.isEmpty {
-                                let hasAppointment = viewModel.user.appointments.contains { $0.date.startOfDay == day.startOfDay }
-                                if hasAppointment {
-                                    Circle()
-                                        .fill(Color.blue)
-                                        .frame(width: 8)
-                                }
-                            }
+//                            if hasAppointment {
+//                                Circle()
+//                                    .fill(Color.blue)
+//                                    .frame(width: 8)
+//                            }
                             
                             Spacer()
                         }
@@ -119,7 +116,7 @@ struct CustomeCalendarView: View {
 #Preview {
     @Previewable @State var selectedDate: Date? = nil
     @Previewable @State var date = Date.now
-    let user = ViewModel().activeUser
+    let user = ViewModel().active
     CustomeCalendarView(date: $date, selectedDate: $selectedDate)
         .environment(ViewModel())
 }

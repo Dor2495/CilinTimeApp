@@ -15,10 +15,10 @@ struct ProfileView: View {
             VStack {
                 Form {
                     Section(header: Text("Details")) {
-                        Text(viewModel.activeUser!.firstName)
-                        Text(viewModel.activeUser!.lastName)
-                        Text(viewModel.activeUser!.email)
-                        Text("\(viewModel.activeUser!.dateOfBirth)")
+                        Text(viewModel.users[0].firstName)
+                        Text(viewModel.users[0].lastName)
+                        Text(viewModel.users[0].email)
+                        Text("\(viewModel.users[0].dateOfBirth)")
                     }
                 }
             }
