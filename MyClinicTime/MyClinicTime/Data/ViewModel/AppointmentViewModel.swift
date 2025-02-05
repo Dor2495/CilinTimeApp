@@ -22,6 +22,10 @@ class AppointmentViewModel {
         loadAppointments()
     }
     
+    func save() {
+        saveAppointments()
+    }
+    
     private func loadAppointments() {
         guard let url = itemsFileURL else {
             print("❌ Error: Invalid file URL")
@@ -43,14 +47,19 @@ class AppointmentViewModel {
         
         do {
             let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            let decodedItems = try decoder.decode([Appointment].self, from: data)
+            print("Data: \(data)")
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
             
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            print("Decoder created: \(decoder)\n")
+            let decodedItems = try decoder.decode([Appointment].self, from: data)
+            print("Decoded Items:\n \(decodedItems)\n")
             print(decodedItems)
             self.allAppointments = decodedItems
         } catch {
-            print("Error loading appointments: \(error)")
+            print("Error loading appointments: \(error.localizedDescription)")
         }
     }
 

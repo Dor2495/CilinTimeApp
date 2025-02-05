@@ -25,7 +25,7 @@ struct HomeView: View {
                 // MARK: Add appointment to file
                 Button("ADD") {
                     let AppointmentToAdd = Appointment(
-                        id: UUID().uuidString, date: 123123,
+                        id: UUID().uuidString, date: Date.now,
                         title: "title",
                         price: 200
                     )
@@ -34,7 +34,8 @@ struct HomeView: View {
                     let userToAdd = User(id: UUID().uuidString, firstName: "firstName", lastName: "lastName", email: "email@gmail.com", password: "123456", isLoggedIn: true, appointments: [AppointmentToAdd])
                     
                     userviewModel.allUsers.append(userToAdd)
-                    
+                    userviewModel.save()
+                    appointmentviewModel.save()
                     print(userviewModel.allUsers)
                     print(appointmentviewModel.allAppointments)
                 }
@@ -103,7 +104,7 @@ struct AppointmentRowView: View {
             VStack(alignment: .leading) {
                 Text(appointment.title)
                     .font(.system(size: 18, weight: .medium, design: .serif))
-                Text("\(appointment.date)")
+                Text("\(appointment.date.formatted(date: .abbreviated, time: .omitted))")
             }
             Spacer()
             Text("\(appointment.price.formatted(.currency(code: "NIS")))")

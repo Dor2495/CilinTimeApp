@@ -2,7 +2,7 @@ import Foundation
 
 struct Appointment: Identifiable, Equatable, Decodable, Encodable {
     var id: String
-    var date: Int
+    var date: Date
     var title: String
     var price: Double
     

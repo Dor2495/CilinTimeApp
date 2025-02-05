@@ -25,12 +25,21 @@ class UserViewModel {
         loadUsers()
     }
     
+    func save() {
+        saveUsers()
+    }
+    
     private func loadUsers() {
         guard let url = usersFileURL, FileManager.default.fileExists(atPath: url.path) else
         { return } // Check file exists
+        
+        print("Users file URL: \(url.path)")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
     
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
 //            print("users file URL: \(url.path)")
         do {
             let data = try Data(contentsOf: url)
