@@ -12,13 +12,18 @@ struct ContentView: View {
     @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
     var body: some View {
         NavigationStack {
-            LoginView()
+//            if let user = userviewModel.activeUser, user.isLoggedIn {
+                MainTabView()
+//            }
+//            else {
+//                LoginView()
+//            }
         }
     }
 }
 
 #Preview {
     ContentView()
-//        .environment(userviewModel)
-//        .environment(appointmentviewModel)
+        .environment(UserViewModel())
+        .environment(AppointmentViewModel())
 }

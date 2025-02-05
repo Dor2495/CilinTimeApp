@@ -15,6 +15,8 @@ class UserViewModel {
         }
     }
     
+    var activeUser: User?
+    
     private let usersFileURL: URL?
 
     init() {
@@ -24,22 +26,28 @@ class UserViewModel {
     }
     
     private func loadUsers() {
-            guard let url = usersFileURL, FileManager.default.fileExists(atPath: url.path) else { return } // Check file exists
-        
-//            print("users file URL: \(url.path)") 
-            do {
-                let data = try Data(contentsOf: url)
-                let decodedUsers = try JSONDecoder().decode([User].self, from: data)
-                self.allUsers = decodedUsers
-                print(allUsers)
-            } catch {
-                print("Error loading users: \(error)") // Important: Handle errors
-                // Consider showing an alert to the user or using a default value if loading fails.
-            }
+        guard let url = usersFileURL, FileManager.default.fileExists(atPath: url.path) else
+        { return } // Check file exists
+    
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+//            print("users file URL: \(url.path)")
+        do {
+            let data = try Data(contentsOf: url)
+            let decodedUsers = try decoder.decode([User].self, from: data)
+            self.allUsers = decodedUsers
+            print(allUsers)
+        } catch {
+            print("Error loading users: \(error)") // Important: Handle errors
+            // Consider showing an alert to the user or using a default value if loading fails.
         }
+    }
     
     private func saveUsers() {
         guard let url = usersFileURL else { return }
+        
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
         do {
             let encodedData = try JSONEncoder().encode(allUsers)
             try encodedData.write(to: url)

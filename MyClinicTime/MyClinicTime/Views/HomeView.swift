@@ -25,7 +25,7 @@ struct HomeView: View {
                 // MARK: Add appointment to file
                 Button("ADD") {
                     let AppointmentToAdd = Appointment(
-                        id: UUID().uuidString,
+                        id: UUID().uuidString, date: 123123,
                         title: "title",
                         price: 200
                     )
@@ -103,8 +103,7 @@ struct AppointmentRowView: View {
             VStack(alignment: .leading) {
                 Text(appointment.title)
                     .font(.system(size: 18, weight: .medium, design: .serif))
-//                Text(appointment.date.toString())
-//                    .font(.system(size: 14, weight: .regular, design: .serif))
+                Text("\(appointment.date)")
             }
             Spacer()
             Text("\(appointment.price.formatted(.currency(code: "NIS")))")
