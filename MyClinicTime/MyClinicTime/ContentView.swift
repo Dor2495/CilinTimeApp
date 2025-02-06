@@ -10,19 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @Environment(UserViewModel.self) var userviewModel: UserViewModel
     @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
-    
-    @State var sessionManager = SessionManager()
+    @Environment(SessionManager.self) var sessionManager: SessionManager
     
     var body: some View {
-        
-        
-        
         NavigationStack {
-            if userviewModel.allUsers[0].isLoggedIn {
-                MainTabView()
-            }
-            else {
+            
+            if sessionManager.activeUser == nil {
                 LoginView()
+            } else if sessionManager.activeUser!.isLoggedIn == true {
+                MainTabView()
             }
         }
     }

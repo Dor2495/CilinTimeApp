@@ -11,6 +11,8 @@ import SwiftUI
 struct MyClinicTimeApp: App {
     @State var userviewModel = UserViewModel()
     @State var appointmentviewModel = AppointmentViewModel()
+    @State var sessionManager = SessionManager()
+    
     
     var body: some Scene {
         WindowGroup {
@@ -18,5 +20,6 @@ struct MyClinicTimeApp: App {
         }
         .environment(userviewModel)
         .environment(appointmentviewModel)
+        .environment(sessionManager)
     }
 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct Confirmation: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(AppointmentViewModel.self) var appointmentviewModel
+    @Environment(SessionManager.self) var sessionManager
+    
     
     var appointment: Appointment
     
@@ -24,9 +26,9 @@ struct Confirmation: View {
                 .font(.headline)
                 .padding(.bottom, 5)
             
-//            Text("Date: \(appointment.date)")
-//                .font(.subheadline)
-//                .foregroundColor(.gray)
+            Text("Date: \(appointment.date)")
+                .font(.subheadline)
+                .foregroundColor(.gray)
             
             Text("Price: $\(appointment.price, specifier: "%.2f")")
                 .font(.subheadline)
@@ -48,7 +50,7 @@ struct Confirmation: View {
                     .cornerRadius(10)
             }
             .padding(.horizontal)
-            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+//            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
             
             Button(action: {
                 // Dismiss the confirmation view
@@ -63,7 +65,7 @@ struct Confirmation: View {
                     .cornerRadius(10)
             }
             .padding(.horizontal)
-            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+//            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
         }
         .padding()
         .navigationTitle("Confirmation")
@@ -72,8 +74,9 @@ struct Confirmation: View {
 }
 
 #Preview {
-    Confirmation(appointment: AppointmentViewModel().allAppointments[0])
-        .environment(UserViewModel())
-        .environment(AppointmentViewModel())
+//    Confirmation(appointment: AppointmentViewModel().allAppointments[0])
+//        .environment(UserViewModel())
+//        .environment(AppointmentViewModel())
+//        .environment(AppointmentViewModel())
         
 }

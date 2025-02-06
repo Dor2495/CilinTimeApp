@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @Environment(UserViewModel.self) var userviewModel: UserViewModel
     @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
+    @Environment(SessionManager.self) var sessionManager: SessionManager
     
     @State private var showCalendar: Bool = false
     @State private var date = Date.now
@@ -54,6 +55,7 @@ struct HomeView: View {
 
 struct ListView: View {
     @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
+    @Environment(SessionManager.self) var sessionManager: SessionManager
     
     var selectedDate: Date?
     @State var appointmentsAtDay: [Appointment] = []
@@ -117,4 +119,5 @@ struct AppointmentRowView: View {
     HomeView()
         .environment(UserViewModel())
         .environment(AppointmentViewModel())
+        .environment(SessionManager())
 }

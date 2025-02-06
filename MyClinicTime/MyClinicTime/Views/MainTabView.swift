@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @Environment(SessionManager.self) var sessionManager: SessionManager
     
     @State private var selectedTab: Int = 1
     
@@ -42,4 +43,5 @@ struct MainTabView: View {
     MainTabView()
         .environment(UserViewModel())
         .environment(AppointmentViewModel())
+        .environment(SessionManager())
 }

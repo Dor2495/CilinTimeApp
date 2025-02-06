@@ -10,16 +10,17 @@ import SwiftUI
 struct ProfileView: View {
     @Environment(UserViewModel.self) var userviewModel: UserViewModel
     @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
+    @Environment(SessionManager.self) var sessionManager: SessionManager
     
     var body: some View {
         NavigationView {
             VStack {
                 Form {
                     Section(header: Text("Details")) {
-//                        Text(userviewModel.allUsers[0].firstName)
-//                        Text(userviewModel.allUsers[0].lastName)
-//                        Text(userviewModel.allUsers[0].email)
-//                        Text("\(userviewModel.allUsers[0].dateOfBirth)")
+                        Text(sessionManager.firstName)
+//                        Text(sessionManager.activeUser!.lastName)
+//                        Text(sessionManager.activeUser!.email)
+//                        Text("\(sessionManager.allUsers[0].dateOfBirth)")
                     }
                 }
             }
@@ -29,6 +30,9 @@ struct ProfileView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: {
                         // MARK: - log out
+                        print("logging out as: \(sessionManager.firstName)")
+                        sessionManager.logout()
+                        print("Logged out successfully")
                     }) {
                         Text("Logout")
                             .bold()
@@ -44,4 +48,5 @@ struct ProfileView: View {
     ProfileView()
         .environment(UserViewModel())
         .environment(AppointmentViewModel())
+        .environment(SessionManager())
 }

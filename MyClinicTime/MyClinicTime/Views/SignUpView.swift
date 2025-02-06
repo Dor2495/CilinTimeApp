@@ -10,6 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     @Environment(UserViewModel.self) var userviewModel: UserViewModel
     @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
+    @Environment(SessionManager.self) var sessionManager: SessionManager
     
     @State private var firstName: String = ""
     @State private var lastName: String = ""
@@ -63,6 +64,9 @@ struct SignUpView: View {
                     )
                     
                     userviewModel.allUsers.append(newUser)
+                    sessionManager.login(as: newUser)
+                    
+                    print(sessionManager.activeUser!)
                     
                 } label: {
                     Text("Sign Up")
@@ -94,4 +98,5 @@ struct SignUpView: View {
     SignUpView()
         .environment(UserViewModel())
         .environment(AppointmentViewModel())
+        .environment(SessionManager())
 }

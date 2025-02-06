@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @Environment(UserViewModel.self) var userViewModel
-    @Environment(SessionManager.self) var sessionManager
+    @Environment(UserViewModel.self) var userViewModel: UserViewModel
+    @Environment(SessionManager.self) var sessionManager: SessionManager
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -36,6 +36,11 @@ struct LoginView: View {
                 Button(action: {
                     // MARK: log user in
                     login(email: email, password: password)
+                    guard let user = userViewModel.login(email, password) else {
+                        print("No user")
+                        return
+                    }
+                    sessionManager.login(as: user)
                     
                 }) {
                     Text("Log In")
@@ -67,8 +72,8 @@ struct LoginView: View {
             return
         }
         
-        sessionManager.user = user
-        sessionManager.user!.isLoggedIn = true
+        sessionManager.login(as: user)
+        print(sessionManager.activeUser!)
     }
 }
 
@@ -95,5 +100,5 @@ struct UserInput: View {
 #Preview {
     LoginView()
         .environment(UserViewModel())
-        .environment(AppointmentViewModel())
+        .environment(SessionManager())
 }

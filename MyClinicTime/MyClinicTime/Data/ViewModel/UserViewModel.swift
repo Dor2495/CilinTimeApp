@@ -9,7 +9,15 @@ import Foundation
 
 @Observable
 class UserViewModel {
-    var allUsers: [User] = [] {
+    var allUsers: [User] = [User(
+        id: UUID().uuidString,
+        firstName: "Dor",
+        lastName: "Mizrachi",
+        email: "Dor@gmail.com",
+        password: "password",
+        isLoggedIn: false,
+        appointments: []
+    )] {
         didSet {
             saveUsers()
         }
@@ -28,8 +36,6 @@ class UserViewModel {
     }
     
     private func loadUsers() {
-//        guard let url = usersFileURL, FileManager.default.fileExists(atPath: url.path) else
-//        { return } // Check file exists
         
         guard let url = usersFileURL else {
             print("❌ Error: Invalid file URL")
