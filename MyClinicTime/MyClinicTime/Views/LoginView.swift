@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @Environment(UserViewModel.self) var userViewModel
+    @Environment(SessionManager.self) var sessionManager
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -61,7 +62,13 @@ struct LoginView: View {
     
     func login(email: String, password: String) {
         // MARK: - login function
-        userViewModel.login(email, password)
+        guard let user = userViewModel.login(email, password) else {
+            print("no user found")
+            return
+        }
+        
+        sessionManager.user = user
+        sessionManager.user!.isLoggedIn = true
     }
 }
 

@@ -15,8 +15,6 @@ class UserViewModel {
         }
     }
     
-    var activeUser: User?
-    
     private let usersFileURL: URL?
 
     init() {
@@ -47,14 +45,11 @@ class UserViewModel {
         
         
         print("Users file URL: \(url.path)")
-        
-        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
     
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(.dateFormatter)
             print("users file URL: \(url.path)")
+        
         do {
             let data = try Data(contentsOf: url)
             let decodedUsers = try decoder.decode([User].self, from: data)
@@ -70,8 +65,6 @@ class UserViewModel {
         guard let url = usersFileURL else { return }
         
         do {
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
             
             let encoder = JSONEncoder()
             encoder.dateEncodingStrategy = .formatted(.dateFormatter)

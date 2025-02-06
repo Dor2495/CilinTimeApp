@@ -50,9 +50,6 @@ class AppointmentViewModel {
             let data = try Data(contentsOf: url)
             print("Data: \(data)")
             
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-            
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .formatted(.dateFormatter)
             
@@ -69,8 +66,6 @@ class AppointmentViewModel {
     private func saveAppointments() {
         guard let url = itemsFileURL else { return }
         do {
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
             
             let encoder = JSONEncoder()
             encoder.dateEncodingStrategy = .formatted(.dateFormatter)
