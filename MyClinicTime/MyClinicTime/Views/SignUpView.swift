@@ -50,7 +50,19 @@ struct SignUpView: View {
                 .padding()
                 
                 Button {
-                    // MARK: log user in
+                    // MARK: sign user up
+                    print("tapped")
+                    let newUser = User(
+                        id: UUID().uuidString,
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        password: password,
+                        isLoggedIn: false,
+                        appointments: []
+                    )
+                    
+                    userviewModel.allUsers.append(newUser)
                     
                 } label: {
                     Text("Sign Up")

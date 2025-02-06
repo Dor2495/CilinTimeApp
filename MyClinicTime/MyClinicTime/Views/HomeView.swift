@@ -23,22 +23,22 @@ struct HomeView: View {
                 CustomeCalendarView(date: $date, selectedDate: $selectedDate)
                 
                 // MARK: Add appointment to file
-                Button("ADD") {
-                    let AppointmentToAdd = Appointment(
-                        id: UUID().uuidString, date: Date.now,
-                        title: "title",
-                        price: 200
-                    )
-                    appointmentviewModel.allAppointments.append(AppointmentToAdd)
-                    
-                    let userToAdd = User(id: UUID().uuidString, firstName: "firstName", lastName: "lastName", email: "email@gmail.com", password: "123456", isLoggedIn: true, appointments: [AppointmentToAdd])
-                    
-                    userviewModel.allUsers.append(userToAdd)
-                    userviewModel.save()
-                    appointmentviewModel.save()
-                    print(userviewModel.allUsers)
-                    print(appointmentviewModel.allAppointments)
-                }
+//                Button("ADD") {
+//                    let AppointmentToAdd = Appointment(
+//                        id: UUID().uuidString, date: Date() ,
+//                        title: "title",
+//                        price: 200
+//                    )
+//                    appointmentviewModel.allAppointments.append(AppointmentToAdd)
+//                    
+//                    let userToAdd = User(id: UUID().uuidString, firstName: "firstName", lastName: "lastName", email: "email@gmail.com", password: "123456", isLoggedIn: true, appointments: [AppointmentToAdd])
+//                    
+//                    userviewModel.allUsers.append(userToAdd)
+//                    userviewModel.save()
+//                    appointmentviewModel.save()
+//                    print(userviewModel.allUsers)
+//                    print(appointmentviewModel.allAppointments)
+//                }
                 
                 
                 ListView(selectedDate: selectedDate)
