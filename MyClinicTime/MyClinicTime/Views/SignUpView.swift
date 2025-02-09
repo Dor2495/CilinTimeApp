@@ -19,83 +19,86 @@ struct SignUpView: View {
     @State private var confirmPassword: String = ""
     @State private var dateOfBirth: Date = Date()
     
+    @Binding var isLoggedIn: Bool
+    
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 60) {
-                
-                Text("Welcome to MyClinicTime")
-                    .font(.system(size: 38, weight: .bold, design: .serif))
-                    .multilineTextAlignment(.center)
-                
-                //MARK: user inputs
-                VStack(spacing: 20) {
-                    UserInput(text: $firstName, description: "First Name", contentType: .givenName)
+        
+            NavigationStack {
+                VStack(spacing: 60) {
                     
-                    UserInput(text: $lastName, description: "Last Name", contentType: .familyName)
+                    Text("Welcome to MyClinicTime")
+                        .font(.system(size: 38, weight: .bold, design: .serif))
+                        .multilineTextAlignment(.center)
                     
-                    DatePicker("Date Of Birth", selection: $dateOfBirth, displayedComponents: [.date])
-                        .datePickerStyle(.compact)
+                    //MARK: user inputs
+                    VStack(spacing: 20) {
+                        UserInput(text: $firstName, description: "First Name", contentType: .givenName)
+                        
+                        UserInput(text: $lastName, description: "Last Name", contentType: .familyName)
+                        
+                        DatePicker("Date Of Birth", selection: $dateOfBirth, displayedComponents: [.date])
+                            .datePickerStyle(.compact)
+                        
+                        UserInput(text: $email,
+                                  description: "E-mail",
+                                  contentType: .username)
+                        
+                        UserInput(text: $password,
+                                  description: "Password",
+                                  contentType: .password)
+                        
+                        UserInput(text: $confirmPassword,
+                                  description: "Confirm Password",
+                                  contentType: .password)
+                    }
+                    .padding()
                     
-                    UserInput(text: $email,
-                              description: "E-mail",
-                              contentType: .username)
+                    Button {
+                        // MARK: sign user up
+                        print("tapped")
+                        let newUser = User(
+                            id: UUID().uuidString,
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email,
+                            password: password,
+                            isLoggedIn: false,
+                            appointments: []
+                        )
+                        
+                        userviewModel.allUsers.append(newUser)
+                        sessionManager.login(as: newUser)
+                        isLoggedIn = true
+                        
+                    } label: {
+                        Text("Sign Up")
+                            .bold()
+                            .frame(width: 300, height: 30)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    //MARK: make log-in button DISABLED
                     
-                    UserInput(text: $password,
-                              description: "Password",
-                              contentType: .password)
-                    
-                    UserInput(text: $confirmPassword,
-                              description: "Confirm Password",
-                              contentType: .password)
+                    HStack {
+                        Text("Already have an account?")
+                            .foregroundStyle(.gray)
+                        
+                        NavigationLink(destination: LoginView(isLoggedIn: $isLoggedIn)) {
+                            Text("Log In")
+                                .foregroundColor(.blue)
+                                .font(.system(size: 16))
+                        }
+                    }
                 }
                 .padding()
                 
-                Button {
-                    // MARK: sign user up
-                    print("tapped")
-                    let newUser = User(
-                        id: UUID().uuidString,
-                        firstName: firstName,
-                        lastName: lastName,
-                        email: email,
-                        password: password,
-                        isLoggedIn: false,
-                        appointments: []
-                    )
-                    
-                    userviewModel.allUsers.append(newUser)
-                    sessionManager.login(as: newUser)
-                    
-                    print(sessionManager.activeUser!)
-                    
-                } label: {
-                    Text("Sign Up")
-                        .bold()
-                        .frame(width: 300, height: 30)
-                }
-                .buttonStyle(.borderedProminent)
-                //MARK: make log-in button DISABLED
-                   
-                HStack {
-                    Text("Already have an account?")
-                        .foregroundStyle(.gray)
-                    
-                    NavigationLink(destination: LoginView()) {
-                        Text("Log In")
-                            .foregroundColor(.blue)
-                            .font(.system(size: 16))
-                    }
-                }
-            }
-            .padding()
-            
-            .navigationBarBackButtonHidden(true)
+                .navigationBarBackButtonHidden(true)
         }
     }
 }
 
 #Preview {
-    SignUpView()
+    @Previewable @State var isLoggedIn: Bool = false
+    SignUpView(isLoggedIn: $isLoggedIn)
         .environment(UserViewModel())
         .environment(AppointmentViewModel())
         .environment(SessionManager())

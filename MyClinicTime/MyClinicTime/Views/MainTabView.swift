@@ -11,12 +11,13 @@ struct MainTabView: View {
     @Environment(SessionManager.self) var sessionManager: SessionManager
     
     @State private var selectedTab: Int = 1
+    @Binding var isLoggedIn: Bool
     
     var body: some View {
         TabView(selection: $selectedTab) {
             
             //MARK: home tab
-            HomeView()
+            HomeView(isLogeedIn: $isLoggedIn)
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
@@ -30,7 +31,7 @@ struct MainTabView: View {
                 .tag(2)
             
             //MARK: profile tab
-            ProfileView()
+            ProfileView(isLoggedIn: $isLoggedIn)
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }
@@ -40,7 +41,8 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView()
+    @Previewable @State var isLoggedIn: Bool = false
+    MainTabView(isLoggedIn: $isLoggedIn)
         .environment(UserViewModel())
         .environment(AppointmentViewModel())
         .environment(SessionManager())

@@ -14,6 +14,8 @@ struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     
+    @Binding var isLoggedIn: Bool
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 60) {
@@ -35,12 +37,7 @@ struct LoginView: View {
                 
                 Button(action: {
                     // MARK: log user in
-                    login(email: email, password: password)
-                    guard let user = userViewModel.login(email, password) else {
-                        print("No user")
-                        return
-                    }
-                    sessionManager.login(as: user)
+                    login()
                     
                 }) {
                     Text("Log In")
@@ -52,7 +49,7 @@ struct LoginView: View {
                 HStack {
                     Text("Don't have an account?")
                         .foregroundStyle(.gray)
-                    NavigationLink(destination: SignUpView()) {
+                    NavigationLink(destination: SignUpView(isLoggedIn: $isLoggedIn)) {
                         Text("Sign Up")
                             .foregroundColor(.blue)
                             .font(.system(size: 16))
@@ -65,15 +62,14 @@ struct LoginView: View {
         }
     }
     
-    func login(email: String, password: String) {
+    func login() {
         // MARK: - login function
         guard let user = userViewModel.login(email, password) else {
             print("no user found")
             return
         }
-        
+        isLoggedIn = true
         sessionManager.login(as: user)
-        print(sessionManager.activeUser!)
     }
 }
 
@@ -98,7 +94,8 @@ struct UserInput: View {
 }
 
 #Preview {
-    LoginView()
+    @Previewable @State var isLoggedIn: Bool = false
+    LoginView(isLoggedIn: $isLoggedIn)
         .environment(UserViewModel())
         .environment(SessionManager())
 }

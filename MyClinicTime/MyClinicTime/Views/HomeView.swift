@@ -15,6 +15,8 @@ struct HomeView: View {
     @State private var showCalendar: Bool = false
     @State private var date = Date.now
     @State private var selectedDate: Date? = nil
+    
+    @Binding var isLogeedIn: Bool
 
     
     var body: some View {
@@ -116,7 +118,8 @@ struct AppointmentRowView: View {
 }
 
 #Preview {
-    HomeView()
+    @Previewable @State var isLogeedIn: Bool = false
+    HomeView(isLogeedIn: $isLogeedIn)
         .environment(UserViewModel())
         .environment(AppointmentViewModel())
         .environment(SessionManager())

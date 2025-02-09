@@ -12,6 +12,8 @@ struct ProfileView: View {
     @Environment(AppointmentViewModel.self) var appointmentviewModel: AppointmentViewModel
     @Environment(SessionManager.self) var sessionManager: SessionManager
     
+    @Binding var isLoggedIn: Bool
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -32,6 +34,7 @@ struct ProfileView: View {
                         // MARK: - log out
                         print("logging out as: \(sessionManager.firstName)")
                         sessionManager.logout()
+                        isLoggedIn = false
                         print("Logged out successfully")
                     }) {
                         Text("Logout")
@@ -45,7 +48,8 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    @Previewable @State var isLoggedIn: Bool = false
+    ProfileView(isLoggedIn: $isLoggedIn)
         .environment(UserViewModel())
         .environment(AppointmentViewModel())
         .environment(SessionManager())

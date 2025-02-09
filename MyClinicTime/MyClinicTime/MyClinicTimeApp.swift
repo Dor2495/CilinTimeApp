@@ -13,10 +13,11 @@ struct MyClinicTimeApp: App {
     @State var appointmentviewModel = AppointmentViewModel()
     @State var sessionManager = SessionManager()
     
+    @State var isLoggedIn: Bool = false
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(isLoggedIn: $isLoggedIn)
         }
         .environment(userviewModel)
         .environment(appointmentviewModel)
