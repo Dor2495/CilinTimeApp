@@ -9,21 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var userVeiwMode = UserViewModel()
-    @State var activeUser: User? = nil
+    @StateObject var sessionManager = SessionManager()
     
     var body: some View {
         NavigationStack {
-            
-            if activeUser != nil {
-                if activeUser!.isLoggedIn {
-                    SignOutView(activeUser: $activeUser)
-                        .environmentObject(userVeiwMode)
-                }
+            if let activeUser = sessionManager.activeUser, activeUser.isLoggedIn {
+                MainTabView()
             } else {
-                LogInView(activeUser: $activeUser)
-                    .environmentObject(userVeiwMode)
+                LogInView()
             }
         }
+        .environmentObject(userVeiwMode)
+        .environmentObject(sessionManager)
     }
 }
 

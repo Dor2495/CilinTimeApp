@@ -20,10 +20,12 @@ class SessionManager: ObservableObject {
     
     func login(as user: User) {
         activeUser = user
+        activeUser?.isLoggedIn = true
         print("Active user: \(String(describing: activeUser))")
     }
     
     func logout() {
+        activeUser?.isLoggedIn = false
         activeUser = nil
         print("Logged out: \(String(describing: activeUser))")
     }

@@ -9,15 +9,22 @@ import SwiftUI
 
 struct LogInView: View {
     @EnvironmentObject var userVeiwMode: UserViewModel
+    @EnvironmentObject var sessionManager: SessionManager
     
     @State var email: String = "Email@gmail.com"
     @State var password: String = "password"
-    @Binding var activeUser: User?
     
     var body: some View {
         NavigationStack {
             
             VStack(spacing: 30) {
+                
+                // TITLE
+                Text("My Clinic Time")
+                    .font(.system(size: 40, weight: .bold, design: .default))
+                    .padding(.bottom, 30)
+                    .multilineTextAlignment(.center)
+                
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Enter Email")
                     TextField("Email", text: $email)
@@ -29,27 +36,21 @@ struct LogInView: View {
                 }
                 
                 Button {
-                    activeUser = userVeiwMode.login(email, password) ?? nil
-                    if activeUser != nil {
-                        activeUser!.isLoggedIn.toggle()
-                        print("Logged in as - \(activeUser!.email)")
+                    if  userVeiwMode.validation(email, password) {
+                        let user = userVeiwMode.login(email, password)
+                        sessionManager.login(as: user!)
+                        print("Logged in as - \(user!.email)")
                     } else {
                         print("No User Found for \(email) or Password is incorrect")
                     }
-                    
                 } label: {
                     Text("Log In")
+                        .bold()
                 }
-                
-                Button {
-                    print("\(String(describing: activeUser))")
-                } label: {
-                    Text("Print activeUser")
-                }
+                .buttonStyle(.borderedProminent)
             }
+            .textFieldStyle(.roundedBorder)
             .padding(.horizontal, 30)
-            
-            .navigationTitle("Login")
         }
     }
 }
@@ -57,6 +58,7 @@ struct LogInView: View {
 #Preview {
     @Previewable @StateObject var userVeiwMode = UserViewModel()
     @Previewable @State var activeUser: User? = UserViewModel().allUsers.first!
-    LogInView(activeUser: $activeUser)
+    LogInView()
         .environmentObject(userVeiwMode)
+        .environmentObject(SessionManager())
 }
