@@ -8,10 +8,8 @@
 import Foundation
 import SwiftUI
 
-@Observable
-class SessionManager {
-
-    var activeUser: User? = nil
+class SessionManager: ObservableObject {
+    @Published var activeUser: User? = nil
     
     var firstName: String {
         guard let activeUser = activeUser else {

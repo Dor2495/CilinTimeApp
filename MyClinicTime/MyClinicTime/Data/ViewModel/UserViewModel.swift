@@ -7,9 +7,9 @@
 
 import Foundation
 
-@Observable
-class UserViewModel {
-    var allUsers: [User] = [User(
+
+class UserViewModel: ObservableObject {
+    @Published var allUsers: [User] = [User(
         id: UUID().uuidString,
         firstName: "Dor",
         lastName: "Mizrachi",
@@ -80,6 +80,12 @@ class UserViewModel {
         } catch {
             print("Error saving users: \(error)") // Important: Handle errors
         }
+    }
+    
+    private func deleteAllUsers() {
+        allUsers.removeAll()
+        print("All useres removed")
+        saveUsers()
     }
 }
 

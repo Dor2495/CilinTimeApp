@@ -8,6 +8,6 @@
 import Foundation
 extension UserViewModel {
     func login(_ email: String, _ password: String) -> User? {
-        return allUsers.first { $0.email == email && $0.password == password }
+        return allUsers.first { $0.email == email && $0.password == password } ?? nil
     }
 }

@@ -7,9 +7,8 @@
 
 import Foundation
 
-@Observable
-class AppointmentViewModel {
-    var allAppointments: [Appointment] = [] {
+class AppointmentViewModel: ObservableObject {
+    @Published var allAppointments: [Appointment] = [] {
         didSet {
             saveAppointments()
         }
