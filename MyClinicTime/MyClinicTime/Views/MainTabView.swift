@@ -11,6 +11,7 @@ struct MainTabView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var sessionManager: SessionManager
     
+    @State var user: User
     
     var body: some View {
         TabView {
@@ -22,7 +23,7 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            AvailableAppointmentsView()
+            AvailableAppointmentsView(user: user)
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("Appointments")
@@ -39,7 +40,7 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView()
+    MainTabView(user: UserViewModel().allUsers.first!)
         .environmentObject(UserViewModel())
         .environmentObject(SessionManager())
 }

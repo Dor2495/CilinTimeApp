@@ -10,11 +10,12 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var userVeiwMode = UserViewModel()
     @StateObject var sessionManager = SessionManager()
+   
     
     var body: some View {
         NavigationStack {
             if let activeUser = sessionManager.activeUser, activeUser.isLoggedIn {
-                MainTabView()
+                MainTabView(user: sessionManager.activeUser!)
             } else {
                 LogInView()
             }

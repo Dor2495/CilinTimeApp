@@ -11,13 +11,6 @@ import SwiftUI
 class SessionManager: ObservableObject {
     @Published var activeUser: User? = nil
     
-    var firstName: String {
-        guard let activeUser = activeUser else {
-            return ""
-        }
-        return activeUser.firstName
-    }
-    
     func login(as user: User) {
         activeUser = user
         activeUser?.isLoggedIn = true

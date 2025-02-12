@@ -13,17 +13,25 @@ struct AvailableAppointmentsView: View {
     
     @StateObject var availableAppointmentsViewModel = AppointmentViewModel()
     
+    @State var list: [Appointment] = [
+        Appointment(id: UUID().uuidString, date: Date().randomDateWithinLastThreeMonths, title: "title 1", price: 100.0),
+        Appointment(id: UUID().uuidString, date: Date().randomDateWithinLastThreeMonths, title: "title 2", price: 100.0),
+        Appointment(id: UUID().uuidString, date: Date().randomDateWithinLastThreeMonths, title: "title 3", price: 100.0),
+    ]
+    
+    @State var user: User?
+        
+    
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach($availableAppointmentsViewModel.allAppointments, id: \.id) { $item in
+                ForEach($list, id: \.id) { $item in
                     HStack {
                         Text(item.title)
                         Spacer()
                         Button {
-                            sessionManager.activeUser?.appointments.append(item)
-                            userViewModel.save()
+                            addAppointment(item)
                         } label: {
                             Image(systemName: "calendar.badge.plus")
                                 .foregroundStyle(.primary)
@@ -32,12 +40,20 @@ struct AvailableAppointmentsView: View {
                 }
             }
         }
+        .onAppear {
+            user = userViewModel.allUsers.first(where: { $0.id == sessionManager.activeUser?.id })
+        }
+    }
+    
+    func addAppointment(_ appointment: Appointment) {
+        let index = userViewModel.allUsers.firstIndex(of: user!)!
+        userViewModel.allUsers[index].appointments.append(appointment)
     }
 }
 
 #Preview {
     @Previewable @StateObject var availableAppointmentsViewModel = AppointmentViewModel()
-    AvailableAppointmentsView()
+    AvailableAppointmentsView(user: UserViewModel().allUsers.first!)
         .environmentObject(UserViewModel())
         .environmentObject(SessionManager())
 }

@@ -13,11 +13,16 @@ struct HomeView: View {
     
     
     var body: some View {
+        var user: User! {
+            if let userId = sessionManager.activeUser?.id {
+                return userViewModel.allUsers.first { $0.id == userId }
+            }
+            return nil
+        }
+        
         VStack {
             List {
-                ForEach(sessionManager.activeUser?.appointments ?? [
-                    Appointment(id: UUID().uuidString, date: Date().randomDateWithinLastThreeMonths, title: "title", price: 300.0)
-                ]) { item in
+                ForEach(user!.appointments) { item in
                     HStack {
                         Text("\(item.title)")
                         Spacer()
