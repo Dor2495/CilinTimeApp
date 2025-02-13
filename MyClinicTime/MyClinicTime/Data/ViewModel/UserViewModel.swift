@@ -19,6 +19,7 @@ class UserViewModel: ObservableObject {
         appointments: []
     )] {
         didSet {
+            print("UserViewModel.didSet")
             saveUsers()
         }
     }

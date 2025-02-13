@@ -19,7 +19,7 @@ struct AvailableAppointmentsView: View {
         Appointment(id: UUID().uuidString, date: Date().randomDateWithinLastThreeMonths, title: "title 3", price: 100.0),
     ]
     
-    @State var user: User?
+    @State var user: User
         
     
     
@@ -39,15 +39,22 @@ struct AvailableAppointmentsView: View {
                     }
                 }
             }
-        }
-        .onAppear {
-            user = userViewModel.allUsers.first(where: { $0.id == sessionManager.activeUser?.id })
+            .onAppear {
+                user = userViewModel.allUsers.first(where: {
+                    $0.id == user.id
+                })!
+            }
+            
+            
+            .navigationTitle("Available Appointments")
         }
     }
     
     func addAppointment(_ appointment: Appointment) {
-        let index = userViewModel.allUsers.firstIndex(of: user!)!
-        userViewModel.allUsers[index].appointments.append(appointment)
+        let index = userViewModel.allUsers.firstIndex(where: {
+            $0.id == user.id
+        })
+        userViewModel.allUsers[index!].appointments.append(appointment)
     }
 }
 

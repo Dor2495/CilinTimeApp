@@ -14,27 +14,29 @@ struct MainTabView: View {
     @State var user: User
     
     var body: some View {
-        TabView {
-            
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
-                }
-                .tag(0)
-            
-            AvailableAppointmentsView(user: user)
-                .tabItem {
-                    Image(systemName: "list.bullet")
-                    Text("Appointments")
-                }
-                .tag(1)
-            ProfileView()
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("Profile")
-                }
-                .tag(2)
+        NavigationStack {
+            TabView {
+                
+                HomeView(user: user)
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("Home")
+                    }
+                    .tag(0)
+                
+                AvailableAppointmentsView(user: user)
+                    .tabItem {
+                        Image(systemName: "list.bullet")
+                        Text("Appointments")
+                    }
+                    .tag(1)
+                ProfileView(user: user)
+                    .tabItem {
+                        Image(systemName: "person")
+                        Text("Profile")
+                    }
+                    .tag(2)
+            }
         }
     }
 }

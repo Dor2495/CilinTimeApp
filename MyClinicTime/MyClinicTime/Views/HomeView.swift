@@ -11,33 +11,47 @@ struct HomeView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var sessionManager: SessionManager
     
+    @State var user: User
     
     var body: some View {
-        var user: User! {
-            if let userId = sessionManager.activeUser?.id {
-                return userViewModel.allUsers.first { $0.id == userId }
-            }
-            return nil
-        }
+        let list = user.appointments
         
-        VStack {
-            List {
-                ForEach(user!.appointments) { item in
-                    HStack {
-                        Text("\(item.title)")
-                        Spacer()
-                        Text("\(item.price.formatted()) $")
-                    }
-                    .bold()
+        NavigationStack {
+            VStack {
+                List {
+                    ForEach(list) { item in
+                        HStack {
+                            Text("\(item.title)")
+                            Spacer()
+                            Text("\(item.price.formatted()) $")
+                        }
+                        .bold()
+                    }.onDelete(perform: delete)
                 }
+                
             }
+            .onAppear {
+                user = userViewModel.allUsers.first(where: {
+                    $0.id == user.id
+                })!
+            }
+            
             .navigationTitle("Home")
         }
+    }
+    
+    func delete(at offset: IndexSet) {
+        user.appointments.remove(atOffsets: offset)
+        
+        let index = userViewModel.allUsers.firstIndex(where: {
+            $0.id == user.id
+        })
+        userViewModel.allUsers[index!] = user
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(user: UserViewModel().allUsers.first!)
         .environmentObject(UserViewModel())
         .environmentObject(SessionManager())
 }

@@ -51,6 +51,8 @@ struct LogInView: View {
             }
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal, 30)
+        }.onAppear {
+            sessionManager.activeUser = nil
         }
     }
 }
