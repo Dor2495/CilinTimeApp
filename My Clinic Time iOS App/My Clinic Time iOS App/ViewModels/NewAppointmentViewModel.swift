@@ -24,7 +24,7 @@ class NewAppointmentViewModel: ObservableObject {
         print("Starting to fetch All Categories...")
         self.isLoading = true
         
-        guard let url = URL(string: "http://localhost:3000/api/categories/") else {
+        guard let url = URL(string: "http://server-ip-address/api/categories/") else {
             print("URL Error")
             self.isLoading = false
             return
