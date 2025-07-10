@@ -142,7 +142,7 @@ struct SignUpView: View {
     
     func register(_ email: String, _ password: String, _ phone: String) async {
         do {
-            let url = URL(string: "http://localhost:3000/auth/register")
+            let url = URL(string: "http://server-ip-address/auth/register")
             var request = URLRequest(url: url!)
             
             
