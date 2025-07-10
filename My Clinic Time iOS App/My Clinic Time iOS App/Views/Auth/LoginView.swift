@@ -11,8 +11,8 @@ import ToastUI
 struct LoginView: View {
     @EnvironmentObject var userVM: UserViewModel
     
-    @State private var email: String = "myclinictimeuser@gmail.com"
-    @State private var password: String = "Aa123456!"
+    @State private var email: String = "emaik@service.com"
+    @State private var password: String = "paswword!"
     
     @FocusState private var focusedField: Field?
     
