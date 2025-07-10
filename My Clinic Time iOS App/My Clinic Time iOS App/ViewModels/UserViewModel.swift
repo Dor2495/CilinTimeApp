@@ -26,6 +26,7 @@ import Foundation
 /// Usage:
 /// - Use this view model with SwiftUI views (as an `ObservableObject`) to reflect and control user authentication, profile data,
 ///   and related loading states.
+
 @MainActor
 class UserViewModel: ObservableObject {
     @Published var user: UserFetchResponse? = nil
@@ -48,7 +49,7 @@ class UserViewModel: ObservableObject {
         print("Start login request for \(email)...")
         self.isLoading = true
         do {
-            guard let url = URL(string: "http://localhost:3000/auth/login") else {
+            guard let url = URL(string: "http://server-ip-address/auth/login") else {
                 self.isLoading = false
                 print("Error URL")
                 return LoginResponse(message: "Error URL")
@@ -96,7 +97,7 @@ class UserViewModel: ObservableObject {
         print("Staring Fetch User Request for \(phone)...")
         self.isLoading = true
         
-        guard let url = URL(string: "http://localhost:3000/customers/\(phone)") else {
+        guard let url = URL(string: "http://server-ip-address/customers/\(phone)") else {
             print("Error URL")
             self.isLoading = false
             return nil
@@ -124,7 +125,7 @@ class UserViewModel: ObservableObject {
         print("Fetching user Appointments....\n")
         self.isLoading = true
         
-        guard let url = URL(string: "http://localhost:3000/appointments/user-appointments/\(phone)") else {
+        guard let url = URL(string: "http://server-ip-address/appointments/user-appointments/\(phone)") else {
             print("Error with URL\n")
             self.isLoading = false
             return []
